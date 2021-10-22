@@ -8,7 +8,7 @@
     <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
      <link rel="shortcut icon" href=  >
     <title>
-        Hexo
+        DOom
     </title>
     <meta name="description" content= 嘿呦嘿呦嘿呦嘿 >
     <meta name="keywords" content= Blog,Hexo,Theme >
@@ -52,8 +52,20 @@
 <p>重点了解一下RAID5</p>
 <p>常规左同步、左异步，常规右同步、右异步</p>
 </li>
+<li><p>RAID阵列卡设置名词解释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Disk Group:磁盘组，这里相当于是阵列，例如配置了一个Raid1,就是一个磁盘组。</span><br><span class="line"></span><br><span class="line">VD（virtual Disk）:虚拟磁盘，虚拟磁盘可以不使用阵列的全部容量，也就是说一个可以分为多个VD。</span><br><span class="line"></span><br><span class="line">PD（physical disk）:故名思义，主是物理硬盘。</span><br><span class="line"></span><br><span class="line">HS（Hot Spare）:热备盘</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="Raid重组软件"><a href="#Raid重组软件" class="headerlink" title="Raid重组软件"></a>Raid重组软件</h2><h2 id="案例讲解"><a href="#案例讲解" class="headerlink" title="案例讲解"></a>案例讲解</h2>
+<h2 id="Raid重组软件"><a href="#Raid重组软件" class="headerlink" title="Raid重组软件"></a>Raid重组软件</h2><p>其实主要用到的工具就是取证大师、R-studio、FTK、还有VMware</p>
+<p>主要面临的阻碍就是磁盘阵列，我们可以通过取证大师或者R-studio给识别出来，但是有的时候并不如意，很有可能会解析半天或者识别不出来，下面推荐几种方法： </p>
+<ul>
+<li><p>取证大师解析逻辑卷+破解阵列</p>
+</li>
+<li><p>FTK挂载+取证大师快速检测识别</p>
+</li>
+<li><p>FTK挂载+VMware虚拟机读取+虚拟机绕过登陆密码</p>
+</li>
+</ul>
+<h2 id="案例讲解"><a href="#案例讲解" class="headerlink" title="案例讲解"></a>案例讲解</h2><h4 id="美亚17年："><a href="#美亚17年：" class="headerlink" title="美亚17年："></a>美亚17年：</h4>
     </div>
 
     
