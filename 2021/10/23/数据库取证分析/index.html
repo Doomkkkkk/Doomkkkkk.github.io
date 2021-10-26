@@ -37,7 +37,7 @@
 <ul>
 <li><p>内存     ——数据页/数据记录</p>
 <p>在内存中数据存储的方式是按照数据页或数据记录的结构，该结构和物理磁盘中数据文件中的数据页或数据记录结构一致。</p>
-<p><img src="image-20211023011304303.png" alt="image-20211023011304303"></p>
+<p><img src="image-20211026093330769.png" alt="image-20211023011304303"></p>
 </li>
 </ul>
 <p>在物理磁盘中数据存储主要包含三大类文件：数据文件、日志文件、和控制文件。其中主要包含数据库中数据记录的是数据文件，而日志文件中也包含一定量的数据库的数据记录。</p>
@@ -72,6 +72,9 @@
 <p>还可以利用文件的扩展名来查找数据存储路径，.mdf .ldf  .bak .sql</p>
 <p>不管是用取证大师也好，或者挂载镜像之后用  来搜也好都可以能找到相关的索引文件，然后在进行逻辑还原</p>
 <p><img src="image-20211026085659660.png" alt="image-20211026085659660"></p>
+<h3 id="SQLserver"><a href="#SQLserver" class="headerlink" title="SQLserver"></a>SQLserver</h3><p>数据库文件；</p>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211026093330769.png" alt="image-20211026093330769"></p>
+<p>sqlserver总是会包含四个数据库：master、modle、tempdb、msdb，除了这四个其他的都是用户自己创建的库</p>
 <h2 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h2><p>常见的关系型数据库Mysql、SqlServer、Oracle、Sqlite</p>
 <p>Mysql数据库，电脑中建议安装两个数据库，一个高版本的一个低版本的，以5.5，5.6为分水岭。</p>
 <h3 id="MYsql"><a href="#MYsql" class="headerlink" title="MYsql"></a>MYsql</h3><p>mysql体系结构可以分为三个部分：服务层、存储引擎层、文件系统层。</p>
@@ -116,7 +119,24 @@
 <li>将需要取证的数据替换到取证电脑mysql数据库数据目录</li>
 <li>绕过密码，登录数据库查看数据取证</li>
 </ol>
-<h2 id="数据库密码绕过与备份还原"><a href="#数据库密码绕过与备份还原" class="headerlink" title="数据库密码绕过与备份还原"></a>数据库密码绕过与备份还原</h2>
+<p>这里需要注意的是我们如果数据库出现两个日志文件的话会启动失败，需要我们删除一个或者重命名。</p>
+<p>数据库版本的获取:</p>
+<p><img src="1.png" alt="1"></p>
+<h2 id="数据库密码绕过与备份还原"><a href="#数据库密码绕过与备份还原" class="headerlink" title="数据库密码绕过与备份还原"></a>数据库密码绕过与备份还原</h2><p>sqlserver密码恢复：</p>
+<blockquote>
+<p>在实际的取证过程中会遇到DBMS采用的sql身份验证方式，而并未集成windows身份验证方式，此时要访问数据库中的信息，就要对sqlserver密码的恢复或者绕过</p>
+<p>（其实和虚拟机绕过登录密码差不多）</p>
+</blockquote>
+<p>第一步：停掉默认的实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop MSSQLServer</span><br></pre></td></tr></table></figure>
+
+<p>第二步：以单用户模式启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start MSSQLServer /m SQLCMD</span><br></pre></td></tr></table></figure>
+
+<p>第三步：以管理员的权限运行cmd,执行以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQLCMD -A</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
