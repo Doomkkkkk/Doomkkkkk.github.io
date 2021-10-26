@@ -33,14 +33,90 @@
         <hr>
     </div>
     <div class="post-content">
-        <h2 id="s数据库取证概述"><a href="#s数据库取证概述" class="headerlink" title="s数据库取证概述"></a>s数据库取证概述</h2><h3 id="数据库固定-数据库存储逻辑"><a href="#数据库固定-数据库存储逻辑" class="headerlink" title="数据库固定|数据库存储逻辑"></a>数据库固定|数据库存储逻辑</h3><p>对数据库进行数据固定之前，需要了解数据库存储分布，主要在内存和物理磁盘中。</p>
+        <h2 id="数据库取证概述"><a href="#数据库取证概述" class="headerlink" title="数据库取证概述"></a>数据库取证概述</h2><h3 id="数据库固定-数据库存储逻辑"><a href="#数据库固定-数据库存储逻辑" class="headerlink" title="数据库固定|数据库存储逻辑"></a>数据库固定|数据库存储逻辑</h3><p>对数据库进行数据固定之前，需要了解数据库存储分布，主要在内存和物理磁盘中。</p>
 <ul>
 <li><p>内存     ——数据页/数据记录</p>
 <p>在内存中数据存储的方式是按照数据页或数据记录的结构，该结构和物理磁盘中数据文件中的数据页或数据记录结构一致。</p>
 <p><img src="image-20211023011304303.png" alt="image-20211023011304303"></p>
 </li>
 </ul>
-<h2 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h2><h2 id="数据库密码绕过与备份还原"><a href="#数据库密码绕过与备份还原" class="headerlink" title="数据库密码绕过与备份还原"></a>数据库密码绕过与备份还原</h2>
+<p>在物理磁盘中数据存储主要包含三大类文件：数据文件、日志文件、和控制文件。其中主要包含数据库中数据记录的是数据文件，而日志文件中也包含一定量的数据库的数据记录。</p>
+<p>我们可以先查看配置文件，从配置文件中找到日志文件的存放路径，从而获取我们想要的信息。</p>
+<p>数据库默认路径</p>
+<blockquote>
+<p>MYsql:</p>
+<ul>
+<li><p>windows下数据文件路径：C:\programdata\MYSQL\Mysql sever 5.7.29\data</p>
+</li>
+<li><p>linux下数据文件路径：/var/lib/mysql/</p>
+<p>以上的路径为默认路径，有些大的站点不可能只用一块盘来存储数据，所以很有可能换</p>
+<p>如果我们可以通过仿真等方式进入了当前数据库，我们可以执行下边的这个命令来查看当前的数据存储目录，指令：show global variables like “%datadir”:</p>
+<p>查看mysql数据库文件存储路径   my.ini OR my.cnf  来找到相关的数据存储路径</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Oracle:</p>
+<ul>
+<li>Windows下数据文件的路径：D：\app\test\ordata\test</li>
+<li>Linux下数据文件路径：/home/oracle/ordata/orcl/</li>
+<li>指令：select name from v$datafile://查询表空间中数据文件的具体位置</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>SQL Server:</p>
+<ul>
+<li>C:\program files\Microsoft sql server\mssql 10_50.SQLEXPRESS\MSSQL\DATA</li>
+</ul>
+</blockquote>
+<p>还可以利用文件的扩展名来查找数据存储路径，.mdf .ldf  .bak .sql</p>
+<p>不管是用取证大师也好，或者挂载镜像之后用  来搜也好都可以能找到相关的索引文件，然后在进行逻辑还原</p>
+<p><img src="image-20211026085659660.png" alt="image-20211026085659660"></p>
+<h2 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h2><p>常见的关系型数据库Mysql、SqlServer、Oracle、Sqlite</p>
+<p>Mysql数据库，电脑中建议安装两个数据库，一个高版本的一个低版本的，以5.5，5.6为分水岭。</p>
+<h3 id="MYsql"><a href="#MYsql" class="headerlink" title="MYsql"></a>MYsql</h3><p>mysql体系结构可以分为三个部分：服务层、存储引擎层、文件系统层。</p>
+<p>mysql文件：</p>
+<ul>
+<li>.ini/cnf                                        </li>
+<li>.err错误文件</li>
+<li>ib_logfile事务日志文件（innodb）</li>
+<li>binlog二进制日志文件</li>
+<li>.frm表结构文件</li>
+<li>.ibdata共享表空间文件（innodb）</li>
+<li>.ibd独立表空间文件（innodb）</li>
+<li>.myi索引文件（myisam）</li>
+<li>.myd数据文件（myisam）</li>
+</ul>
+<p>数据库存放数据的目录data下存放文件的不同代表它采用的存储引擎的不同，这一点很重要，后续备份还原会用到。</p>
+<p>MYsql结构：</p>
+<blockquote>
+<p>data目录：</p>
+<ul>
+<li><p>如果数据库用的是myisam引擎，则目录底下有</p>
+<ul>
+<li>.frm(表文件)</li>
+<li>.myd(数据)</li>
+<li>.myi(索引)文件</li>
+</ul>
+</li>
+<li><p>如果数据库用的是innoDB引擎，则目录下有</p>
+<ul>
+<li>.frm(表文件)</li>
+<li>.ibd(数据)文件</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>数据库取证的常规流程：</p>
+<p>场景：扣押了一台使用mysql数据库的服务器，需要查看数据库数据</p>
+<ol>
+<li>冷备份数据库数据：</li>
+<li>将数据拷贝到取证电脑上，该电脑安装了mysql数据库</li>
+<li>停止取证电脑上的 mysql服务：net stop mysql</li>
+<li>将需要取证的数据替换到取证电脑mysql数据库数据目录</li>
+<li>绕过密码，登录数据库查看数据取证</li>
+</ol>
+<h2 id="数据库密码绕过与备份还原"><a href="#数据库密码绕过与备份还原" class="headerlink" title="数据库密码绕过与备份还原"></a>数据库密码绕过与备份还原</h2>
     </div>
 
     
