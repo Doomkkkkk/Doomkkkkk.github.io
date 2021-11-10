@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>2018年美亚杯团体赛E部分:内存取证 | Getuid</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Getuid">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Getuid" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Getuid</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-11-04T13:54:14.000Z" itemprop="datePublished">
+          2021-11-04
+      </time>
+    
+</span>
+                <h1>2018年美亚杯团体赛E部分:内存取证</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="内存取证"><a href="#内存取证" class="headerlink" title="内存取证"></a>内存取证</h1><p><img src="image-20211104145749642.png" alt="image-20211104145749642"></p>
+<ol>
+<li><p>[单选题] 第E部份 (第 85 至 95 题) : 法证人员曾在Victor的计算器现场作现场取证，并使工具获取其内存镜像。该内存镜像文件名为 “victor_PC_memdump.dmp”，请使用该档案作内存数据分析并回答下列问题: </p>
+<ol start="85">
+<li><p>从内存镜像档案的数据显示，该镜像档案的建立日期是? （答案格式 －“世界协调时间＂：YYYY-MM-DD HH:MM:SS UTC） (1分)<br>A. 2018-11-02 08:31:12 UTC<br>B. 2018-11-02 10:31:12 UTC<br>C. 2018-11-02 14:31:12 UTC<br>D. 2018-11-02 18:31:12 UTC<br>E. 2018-11-02 20:31:12 UTC</p>
+<p>B</p>
+<p><img src="image-20211104151206665.png" alt="image-20211104151206665"></p>
+</li>
+</ol>
+</li>
+<li><p>[单选题] 86.在内存镜像中，就进程javaw.exe而言，它的进程id是? (1分)<br>A. 2364<br>B. 2616<br>C. 26<br>D. 459<br>E. 8003975b30</p>
+<p>A</p>
+<p><img src="image-20211104151318588.png" alt="image-20211104151318588"></p>
+</li>
+<li><p>[单选题] 87.接上题，javaw.exe 是经以下哪个方法在系统上执行 (1分)<br>A. 利用命令提示符(cmd)执行<br>B. 利用psexec软行<br>C. 于Windows资源管理器上双击档案执行<br>D. 于运行中执行<br>E. 于系统启时自动执行</p>
+<p>C</p>
+<blockquote>
+<p> 看他的父进程刚好是explorer.exe <img src="image-20211104151421716.png" alt="image-20211104151421716"></p>
+</blockquote>
+</li>
+<li><p>[单选题] 88.接上题，根据javaw.exe 的进程，它首先执行了下列哪个指令 (1分)<br>A. C:\Program Files\Java\jdk1.8.0_191(2)\bin\javaw.exe” -jar C:\Users\victor\AppData\Roaming\asdasd\asda.jar<br>B. C:\Program Files\Java\jdk1.8.0_191\bin\javaw.exe” -jar C:\Users\victor\AppData\Roaming\asdasd\asda.jar<br>C. C:\Program Files\Java\jdk1.8.0_191\bin\javaw.exe” -jar C:\Users\victor\AppData\Roaming\asdasd\victor_personal_data.pdf.jar<br>D. C:\Program Files\Java\jdk1.8.0_191(1)\bin\javaw.exe” -jar C:\Users\victor\AppData\Roaming\asdasd\asda.jar<br>E. C:\Program Files\Java\jdk1.8.0_191(1)\bin\javaw.exe” -jar C:\Users\victor\AppData\Roaming\asdasd\victor_personal_data.pdf.jar</p>
+</li>
+<li><p>[单选题] 89.接上题，javaw.exe的进程在执行时会呼叫了多少个动态链接函式库(Dynamic Linked Library)? (1分)<br>A. 79<br>B. 80<br>C. 81<br>D. 82<br>E. 83</p>
+<p>D</p>
+<blockquote>
+<p>用dlllist命令查看javaw.exe的进程执行时调用的动态链，数一数</p>
+</blockquote>
+<p><img src="image-20211104154228587.png" alt="image-20211104154228587"></p>
+</li>
+<li><p>[单选题] 90.接上题，javaw.exe的进程曾连接至哪一网络地址(IP Address)？ (1分)<br>A. 119.188.13.180<br>B. 192.168.72.128<br>C. 220.246.55.13<br>D. 120.241.102.156<br>E. 23.41.99.52</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f E:\美亚\2018届美亚杯题目\团队赛\victor_PC_memdump.dmp --profile=Win7SP1x64 netscan</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211104214938578.png" alt="image-20211104214938578"></p>
+</li>
+<li><p>[单选题] 91.接上题，javaw.exe的进程曾连接至上述网络地址的哪个端口(port)？ (1分)<br>A. 1505<br>B. 1506<br>C. 49290<br>D. 1505 &amp; 1506<br>E. 1505 &amp; 49290</p>
+<p>B <img src="image-20211104214954993.png" alt="image-20211104214954993"></p>
+</li>
+<li><p>[单选题] 92.从内存镜像中提取Victor计算机感染的”Adwind RAT”病毒的配置文件(XML格式)并作分析，该病毒档案与C&amp;C服务器连接所使用的密码为? (1分)<br>A. 1234<br>B. 5555<br>C. 2468<br>D. 0000<br>E. 9999<br> 标记本题</p>
+</li>
+<li><p>[单选题] 93.接上题，上述”Adwind RAT “病毒具备了屏幕截图的功能。从内存镜像中分析，黑客是何时对系统进行屏幕截图呢? (以截图显示时间作答) (1分)<br>A. 2018年11月2日18时27分至18时28分<br>B. 2018年11月2日18时28分至18时30分<br>C. 2018年11月2日18时29分至18时30分<br>D. 2018年11月2日18时29分至18时31分<br>E. 2018年11月2日18时28分至18时29分</p>
+</li>
+<li><p>[单选题] 94.取证人员是使用”Magnet RAM Cap”获取该内存镜像，你能找到该档案属于哪个版本吗? (1分)<br>A. 0.90<br>B. 1.00<br>C. 1.01<br>D. 0.91<br>E. 1.50</p>
+<p> B<img src="image-20211104213321963.png" alt="image-20211104213321963"></p>
+<p><img src="image-20211104213419223.png" alt="image-20211104213419223"></p>
+</li>
+<li><p>[单选题] 95.从内存镜像中，你能读取多少个操作系统的用户登入密码? (1分)<br>A.  0<br>B. 1<br>C. 2<br>D. 3<br>E. 4<br> B</p>
+<blockquote>
+<p>一共三个哈希值，只有一个是真的</p>
+</blockquote>
+<p><img src="image-20211104213916727.png" alt="image-20211104213916727"></p>
+</li>
+</ol>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/11/04/2018%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E8%B5%9BF%E9%83%A8%E5%88%86-%E6%89%8B%E6%9C%BA%E5%8F%96%E8%AF%81/" style="float: left;">
+        ← 2018年美亚杯团赛F部分:手机取证
+    </a>
+    
+    
+    <a class="pull-right" href="/2021/11/02/msf-%E7%BE%8E%E5%B0%91%E5%A6%87-%E7%8B%AC%E8%A7%92%E5%85%BD/">
+        msf(美少妇)+独角兽 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

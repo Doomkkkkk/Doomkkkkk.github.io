@@ -1,205 +1,349 @@
 <!DOCTYPE html>
-<html lang="zh">
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
-     <link rel="shortcut icon" href=  >
-    <title>
-        DOom
-    </title>
-    <meta name="description" content= 嘿呦嘿呦嘿呦嘿 >
-    <meta name="keywords" content= Blog,Hexo,Theme >
+  <title>Archives: 2021/10 | Getuid</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Getuid">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Getuid" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
     
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
-
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
     
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    
-<link rel="stylesheet" href="/css/style.css">
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
 
-<meta name="generator" content="Hexo 5.4.0"></head>
-<body id="bodyx">
-    <div class="hd logodiv">
-    <img src="/img/tx.png" class="logopng" alt="logo">
-    <p class="logot">
-         DOom 
-         <span class="logo_2"></span>
-        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
-            死鱼随波逐流，活鱼逆流而上。 
-        </h3>
-    </p>
-</div>
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
 
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
 
-<div class="hd">
-    <ol class="breadcrumb">
-        
+  
+  
+  
 
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="home-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
             
-<script src="/libs/jquery.min.js"></script>
-
             
-<script src="/js/search.js"></script>
-
             
-                <form class="site-search-form">
-                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
-                </form>
-                <div id="local-search-result" class="local-search-result-cls"></div>
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
             
-            <script type="text/javascript" id="local.search.active">
-                var inputArea       = document.querySelector("#local-search-input");
-                var getSearchFile = function(){
-                    var path = "/search.xml";
-                    searchFunc(path, 'local-search-input', 'local-search-result');
-                }
-                inputArea.onfocus = function(){ getSearchFile() }
-
-                var $resetButton = $("#search-form .fa-times");
-                var $resultArea = $("#local-search-result");
-
-                inputArea.oninput = function(){ $resetButton.show(); }
-                resetSearch = function(){
-                    $resultArea.html("");
-                    document.querySelector("#search-form").reset();
-                    $resetButton.hide();
-                    $(".no-result").hide();
-                }
-                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
-                //No search result
-                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
-                    if (!$(e.target).text()) {
-                        $(".no-result").show(100);
-                    } else {
-                        $(".no-result").hide();
-                    }
-                })
-            </script>
-
-    </ol>
-    <hr>
-</div>
-<div class="hd">
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
     
-    
-        
-        
-            <div class="titlex">
-                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
-                 2021年 🕛
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Getuid</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img2.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
+    </div>
+</section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+
+
+
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row boxes">
+                    
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2021/10/29/美亚杯取证刷题笔记/"></a></h4>
+                            
+                            <p><time datetime="2021-10-29T03:13:31.447Z"><a href="/2021/10/29/美亚杯取证刷题笔记/">2021-10-29</a></time></p>
+                        </div>
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2021/10/24/区块链之虚拟货币初步了解/">区块链之虚拟货币初步了解</a></h4>
+                            
+                            <p><time datetime="2021-10-24T10:33:51.000Z"><a href="/2021/10/24/区块链之虚拟货币初步了解/">2021-10-24</a></time></p>
+                        </div>
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2021/10/23/数据库取证分析/">数据库取证分析</a></h4>
+                            
+                            <p><time datetime="2021-10-22T17:02:10.000Z"><a href="/2021/10/23/数据库取证分析/">2021-10-23</a></time></p>
+                        </div>
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2021/10/21/raid重组技术技术与实践/">raid重组技术技术与实践</a></h4>
+                            
+                            <p><time datetime="2021-10-21T00:45:58.000Z"><a href="/2021/10/21/raid重组技术技术与实践/">2021-10-21</a></time></p>
+                        </div>
+                    
+                        
+                            </div><div class="row boxes">
+                            
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2021/10/20/hexo-github创建个人博客教程最新超详细/">hexo+github创建个人博客教程最新超详细</a></h4>
+                            
+                            <p><time datetime="2021-10-20T01:01:15.000Z"><a href="/2021/10/20/hexo-github创建个人博客教程最新超详细/">2021-10-20</a></time></p>
+                        </div>
+                    
+                </div>
+            </div>    
+        </div>
+    </div>
+</section> 
+
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+        </div>
+    </div>
+</section>
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
                 </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
-            
-        
-        <a class="flink" href="/2021/10/24/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B9%8B%E8%99%9A%E6%8B%9F%E8%B4%A7%E5%B8%81%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">
-            <div class="list">
-                <div class="postname">
-                    区块链之虚拟货币初步了解
-                </div>
-                <div class="posttime">
-                    October 24th
-                </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
             </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/10/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%96%E8%AF%81%E5%88%86%E6%9E%90/">
-            <div class="list">
-                <div class="postname">
-                    数据库取证分析
-                </div>
-                <div class="posttime">
-                    October 23rd
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/10/21/raid%E9%87%8D%E7%BB%84%E6%8A%80%E6%9C%AF%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E8%B7%B5/">
-            <div class="list">
-                <div class="postname">
-                    raid重组技术技术与实践
-                </div>
-                <div class="posttime">
-                    October 21st
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/10/20/hexo-github%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%E6%9C%80%E6%96%B0%E8%B6%85%E8%AF%A6%E7%BB%86/">
-            <div class="list">
-                <div class="postname">
-                    hexo+github创建个人博客教程最新超详细
-                </div>
-                <div class="posttime">
-                    October 20th
-                </div>
-            </div>
-        </a>
-    
-</div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
 
-    <div class="footer" id="footer">
-    <p><h4>Copyright © 2020 | Author: DOom | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
-    
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
-    
-    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
-        <input type="checkbox" name="switch" id="update_style">
-        <span class="el-switch-style"></span>
-    </label>
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
 
-    <!--         <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script> -->
-</p>
-</div>
+    resizeHero();
 
-<input type="hidden" id="web_style" value="black">
-<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
-<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
-
-<script src="/libs/jquery.min.js"></script>
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
 
-<script src="/libs/highlight/highlight.pack.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
 
-<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
 
-<script src="/js/js.js"></script>
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
-<style type="text/css">
-.v * {
-color: #698fca;
-}
-.v .vlist .vcard .vhead .vsys {
-color: #3a3e4a;
-}
-.v .vlist .vcard .vh .vmeta .vat {
-color: #638fd5;
-}
-.v .vlist .vcard .vhead .vnick {
-color: #6ba1ff;
-}
-.v a {
-color: #8696b1;
-}
-.v .vlist .vcard .vhead .vnick:hover {
-color: #669bfc;
-}
-</style>
-    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+      
 </body>
 </html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>2018年美亚杯团赛A部分:Linux取证 | Getuid</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Getuid">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Getuid" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Getuid</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-11-05T03:40:09.000Z" itemprop="datePublished">
+          2021-11-05
+      </time>
+    
+</span>
+                <h1>2018年美亚杯团赛A部分:Linux取证</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>Linux取证</p>
+<h4 id="A部分"><a href="#A部分" class="headerlink" title="A部分"></a>A部分</h4><p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211031094059974.png" alt="image-20211031094059974"></p>
+<p>“美亚杯”第四届中国电子数据取证竞赛-团体赛<br>本次比赛共1 个章节, 120 个小题, 比赛时长300 分钟, 总共120分<br>单项选择</p>
+<ol>
+<li><p>[单选题] 第A部份 (第 1 至 12 题) : 根据镜像文件 “c2server.E01” 的内容，回答关于黑客控制的命令服务器(C&amp;C服务器)的问题。 </p>
+<p>1.黑客控制的命令服务器(C&amp;C服务器)是什么版本的系统? (1分)<br>A. CentOS 7<br>B. CentOS 6<br>C. Ubuntu 18.04<br>D. Ubuntu 16.04<br>E. Ubuntu 14.04<br> 标记本题</p>
+<p>D</p>
+<p><img src="image-20211101141903541.png" alt="image-20211101141903541"></p>
+</li>
+<li><p>[单选题] 2.该C&amp;C服务器 /dev/sda1 的通用唯一标识符 (UUID) 是什么? (1分)<br>A. a69c799c-7f0e-4191-9748-66a7e6bc37ad<br>B. 35a727cd-4440-438f-b3dd-0f82d37f8c0e<br>C. ec593f12-e418-492d-97af-b804b8208d99<br>D. 4fce5b91-e899-4807-882f-78c9bcfa66e5<br>E. 07febb97-674c-4cae-803c-19ce92024ce<br> 标记本题</p>
+<p>C</p>
+<blockquote>
+<p>直接在取证大师中搜索相关的配置文件，在etc文件夹中搜索fstab,在这个配置文件中找到UUID</p>
+</blockquote>
+<p><img src="C:/Users/86157/Desktop/Blog/hexo/source/_posts/image-20211101144122030.png" alt="image-20211101144122030"></p>
+</li>
+<li><p>[单选题] 3.系统的时区设定是什么? (1分)<br>A. Asia/Macao<br>B. Asia/Hong_Kong<br>C. Hongkong<br>D. GMT<br>E. Etc/GMT+8<br> 标记本题</p>
+<p>B</p>
+<p><img src="C:/Users/86157/Desktop/Blog/hexo/source/_posts/image-20211101144143722.png" alt="image-20211101144143722"></p>
+</li>
+<li><p>[单选题] 4.黑客曾上传受害公司荣科数码(RKD)文件到C&amp;C服务器，上传方式包括: (i)ftp (ii)ssh (iii)telnet (1分)<br>A. (i)<br>B. (ii)<br>C. (iii)<br>D. (i) and (ii)<br>E. (ii) and (iii)<br> 标记本题</p>
+<p>A</p>
+<blockquote>
+<p>我们将镜像仿真起来，可以利用FTK先挂载，然后创建相应的虚拟机，也可以用仿影，稍微快一点，然后准备绕过密码单用户登录，进入目标系统查看历史操作(用root权限)history，发现有ftp的相关信息，再查看开放的端口netstat -lntp<br>发现只开放了21端口。</p>
+</blockquote>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101144635623.png" alt="image-20211101144635623"></p>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101145012517.png" alt="image-20211101145012517"></p>
+<blockquote>
+<p>然后根据这个线索在取证大师中查找FTP的日志文件，进行验证<br>/var/log/transfer.log<br>导出分析<br>发现有很多FTP上传信息，验证成功</p>
+</blockquote>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101145633185.png" alt="image-20211101145633185"></p>
+</li>
+<li><p>[单选题] 5.黑客曾使用哪一个文件传输协议(FTP)服务账户，用作登入C&amp;C服务器上传档案? (1分)<br>A. upload<br>B. C&amp;C<br>C. ftpuser<br>D. root<br>E. rdkuser<br> 标记本题</p>
+<p>A</p>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101145653822.png" alt="image-20211101145653822"></p>
+</li>
+<li><p>[单选题] 6.接上题，C&amp;C服务器中使用了哪个系统账户用作使用文件传输协议(FTP)服务? (1分)<br>A. upload<br>B. C&amp;C<br>C. ftpuser<br>D. root<br>E. rdkuser<br> 标记本题</p>
+<p>C</p>
+<blockquote>
+<p>我们可以查看系统的操作历史记录，可以在仿真之后直接history<br>也可以在取证大师中的/root/.bash.history<br>查看命令日志<br>发现黑客将ftpuser执行了useradd 添加到了用户组，然后再…..</p>
+</blockquote>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101150547137.png" alt="image-20211101150547137"></p>
+</li>
+<li><p>[单选题] 7. 根据黑客上传的档案，你能找到荣科数码路由器的物理地址(Mac Address)是什么? (1分)<br>A. A0:B4:A5:E6:86:23<br>B. EC:1A:59:50:F9:02<br>C. 74:EA:3A:A3:0D:46<br>D. 8C:0D:76:B0:69:5C<br>E. 14:91:82:73:6D:FD<br> 标记本题</p>
+<p>C</p>
+<blockquote>
+<p>根据他FTP日志，发现他上传的档案在/home/c2/FTP<br>在这个文件夹中，可以发现黑客传的一个ip.txt<br>在这里边找到路由器的默认网关<br>再在arp.txt （一个ip与mac地址对应关系的文档）<br>找到这个默认网关对应的mac地址</p>
+</blockquote>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101152220161.png" alt="image-20211101152220161"></p>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101152253247.png" alt="image-20211101152253247"></p>
+</li>
+<li><p>[单选题] 8.黑客在使用什么软件以暴力破解法取得 Wifi的密码? (1分)<br>A. Wireshark<br>B. Fern WiFi Wireless Cracker<br>C. Kismet<br>D. Aircrack-ng<br>E. WepAttack<br> 标记本题</p>
+<p>D</p>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101152509554.png" alt="image-20211101152509554"></p>
+</li>
+<li><p>[单选题] 9.黑客在什么时候将网络摄录镜头的配置文件cam_config_backup.bin上载到C&amp;C服务器? （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-11-01 15:13:17 +8<br>B. 2018-11-01 17:14:26 +8<br>C. 2018-11-01 17:18:07 +8<br>D. 2018-11-01 17:18:24 +8<br>E. 2018-11-01 17:18:28 +8<br> 标记本题</p>
+<p>D</p>
+<blockquote>
+<p>查看FTP日志/var/log/transfer.log</p>
+</blockquote>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101153329497.png" alt="image-20211101153329497"></p>
+</li>
+<li><p>[单选题] 10.哪一个网络地址(IP Address)可追查黑客的位置? (1分)<br>A. 192.168.7.12<br>B. 218.255.242.113<br>C. 218.255.242.117<br>D. 220.246.55.13<br>E. 220.246.55.160<br> 标记本题</p>
+<p>E</p>
+<blockquote>
+<p>同样是FTP文件地址</p>
+</blockquote>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101153623896.png" alt="image-20211101153623896"></p>
+</li>
+<li><p>[单选题] 11.在命令控制服务器(C&amp;C服务器)中找出从数据库服务器盗取的数据档案,该档案包含多少个数据库? (1分)<br>A. 1<br>B. 2<br>C. 3<br>D. 4<br>E. 5<br> 标记本题</p>
+<p>不会</p>
+</li>
+<li><p>[单选题] 12.接上题,从该数据库寻找到受害人林胜”Victor”的顾客资料及交易数据是否存在，以及包含以下属于他的什么数据： (i)电邮地址 (ii)信用卡号码 (iii)身份证号码 (1分)<br>A. (i)<br>B. (ii)<br>C. (i) (ii)<br>D. (i) (ii) (iii)<br>E. 没有该数据存在<br> 标记本题</p>
+<p>不会</p>
+</li>
+</ol>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2021/11/05/2018%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E8%B5%9BB%E9%83%A8%E5%88%86-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/">
+        2018年美亚杯团赛B部分:计算机取证 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
