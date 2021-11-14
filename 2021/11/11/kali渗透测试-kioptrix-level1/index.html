@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>2018年美亚杯团赛A部分:Linux取证 | Getuid</title>
+  <title>kali渗透测试:kioptrix level1 | Getuid</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,98 +173,40 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2021-11-05T03:40:09.000Z" itemprop="datePublished">
-          2021-11-05
+      <time datetime="2021-11-11T02:00:57.000Z" itemprop="datePublished">
+          2021-11-11
       </time>
     
 </span>
-                <h1>2018年美亚杯团赛A部分:Linux取证</h1>
+                <h1>kali渗透测试:kioptrix level1</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>Linux取证</p>
-<h4 id="A部分"><a href="#A部分" class="headerlink" title="A部分"></a>A部分</h4><p><img src="image-20211031094059974.png" alt="image-20211031094059974"></p>
-<p>“美亚杯”第四届中国电子数据取证竞赛-团体赛<br>本次比赛共1 个章节, 120 个小题, 比赛时长300 分钟, 总共120分<br>单项选择</p>
-<ol>
-<li><p>[单选题] 第A部份 (第 1 至 12 题) : 根据镜像文件 “c2server.E01” 的内容，回答关于黑客控制的命令服务器(C&amp;C服务器)的问题。 </p>
-<p>1.黑客控制的命令服务器(C&amp;C服务器)是什么版本的系统? (1分)<br>A. CentOS 7<br>B. CentOS 6<br>C. Ubuntu 18.04<br>D. Ubuntu 16.04<br>E. Ubuntu 14.04<br> 标记本题</p>
-<p>D</p>
-<p><img src="image-20211101141903541.png" alt="image-20211101141903541"></p>
-</li>
-<li><p>[单选题] 2.该C&amp;C服务器 /dev/sda1 的通用唯一标识符 (UUID) 是什么? (1分)<br>A. a69c799c-7f0e-4191-9748-66a7e6bc37ad<br>B. 35a727cd-4440-438f-b3dd-0f82d37f8c0e<br>C. ec593f12-e418-492d-97af-b804b8208d99<br>D. 4fce5b91-e899-4807-882f-78c9bcfa66e5<br>E. 07febb97-674c-4cae-803c-19ce92024ce<br> 标记本题</p>
-<p>C</p>
-<blockquote>
-<p>直接在取证大师中搜索相关的配置文件，在etc文件夹中搜索fstab,在这个配置文件中找到UUID</p>
-</blockquote>
-<p><img src="image-20211101144122030.png" alt="image-20211101144122030"></p>
-</li>
-<li><p>[单选题] 3.系统的时区设定是什么? (1分)<br>A. Asia/Macao<br>B. Asia/Hong_Kong<br>C. Hongkong<br>D. GMT<br>E. Etc/GMT+8<br> 标记本题</p>
-<p>B</p>
-<p><img src="image-20211101144143722.png" alt="image-20211101144143722"></p>
-</li>
-<li><p>[单选题] 4.黑客曾上传受害公司荣科数码(RKD)文件到C&amp;C服务器，上传方式包括: (i)ftp (ii)ssh (iii)telnet (1分)<br>A. (i)<br>B. (ii)<br>C. (iii)<br>D. (i) and (ii)<br>E. (ii) and (iii)<br> 标记本题</p>
-<p>A</p>
-<blockquote>
-<p>我们将镜像仿真起来，可以利用FTK先挂载，然后创建相应的虚拟机，也可以用仿影，稍微快一点，然后准备绕过密码单用户登录，进入目标系统查看历史操作(用root权限)history，发现有ftp的相关信息，再查看开放的端口netstat -lntp<br>发现只开放了21端口。</p>
-</blockquote>
-<p><img src="image-20211101144635623.png" alt="image-20211101144635623"></p>
-<p><img src="image-20211101145012517.png" alt="image-20211101145012517"></p>
-<blockquote>
-<p>然后根据这个线索在取证大师中查找FTP的日志文件，进行验证<br>/var/log/transfer.log<br>导出分析<br>发现有很多FTP上传信息，验证成功</p>
-</blockquote>
-<p><img src="image-20211101145633185.png" alt="image-20211101145633185"></p>
-</li>
-<li><p>[单选题] 5.黑客曾使用哪一个文件传输协议(FTP)服务账户，用作登入C&amp;C服务器上传档案? (1分)<br>A. upload<br>B. C&amp;C<br>C. ftpuser<br>D. root<br>E. rdkuser<br> 标记本题</p>
-<p>A</p>
-<p><img src="image-20211101145653822.png" alt="image-20211101145653822"></p>
-</li>
-<li><p>[单选题] 6.接上题，C&amp;C服务器中使用了哪个系统账户用作使用文件传输协议(FTP)服务? (1分)<br>A. upload<br>B. C&amp;C<br>C. ftpuser<br>D. root<br>E. rdkuser<br> 标记本题</p>
-<p>C</p>
-<blockquote>
-<p>我们可以查看系统的操作历史记录，可以在仿真之后直接history<br>也可以在取证大师中的/root/.bash.history<br>查看命令日志<br>发现黑客将ftpuser执行了useradd 添加到了用户组，然后再…..</p>
-</blockquote>
-<p><img src="image-20211101150547137.png" alt="image-20211101150547137"></p>
-</li>
-<li><p>[单选题] 7. 根据黑客上传的档案，你能找到荣科数码路由器的物理地址(Mac Address)是什么? (1分)<br>A. A0:B4:A5:E6:86:23<br>B. EC:1A:59:50:F9:02<br>C. 74:EA:3A:A3:0D:46<br>D. 8C:0D:76:B0:69:5C<br>E. 14:91:82:73:6D:FD<br> 标记本题</p>
-<p>C</p>
-<blockquote>
-<p>根据他FTP日志，发现他上传的档案在/home/c2/FTP<br>在这个文件夹中，可以发现黑客传的一个ip.txt<br>在这里边找到路由器的默认网关<br>再在arp.txt （一个ip与mac地址对应关系的文档）<br>找到这个默认网关对应的mac地址</p>
-</blockquote>
-<p><img src="image-20211101152220161.png" alt="image-20211101152220161"></p>
-<p><img src="image-20211101152253247.png" alt="image-20211101152253247"></p>
-</li>
-<li><p>[单选题] 8.黑客在使用什么软件以暴力破解法取得 Wifi的密码? (1分)<br>A. Wireshark<br>B. Fern WiFi Wireless Cracker<br>C. Kismet<br>D. Aircrack-ng<br>E. WepAttack<br> 标记本题</p>
-<p>D</p>
-<p><img src="image-20211101152509554.png" alt="image-20211101152509554"></p>
-</li>
-<li><p>[单选题] 9.黑客在什么时候将网络摄录镜头的配置文件cam_config_backup.bin上载到C&amp;C服务器? （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-11-01 15:13:17 +8<br>B. 2018-11-01 17:14:26 +8<br>C. 2018-11-01 17:18:07 +8<br>D. 2018-11-01 17:18:24 +8<br>E. 2018-11-01 17:18:28 +8<br> 标记本题</p>
-<p>D</p>
-<blockquote>
-<p>查看FTP日志/var/log/transfer.log</p>
-</blockquote>
-<p><img src="image-20211101153329497.png" alt="image-20211101153329497"></p>
-</li>
-<li><p>[单选题] 10.哪一个网络地址(IP Address)可追查黑客的位置? (1分)<br>A. 192.168.7.12<br>B. 218.255.242.113<br>C. 218.255.242.117<br>D. 220.246.55.13<br>E. 220.246.55.160<br> 标记本题</p>
-<p>E</p>
-<blockquote>
-<p>同样是FTP文件地址</p>
-</blockquote>
-<p><img src="image-20211101153623896.png" alt="image-20211101153623896"></p>
-</li>
+      		<h1 id="kioptrix-level1"><a href="#kioptrix-level1" class="headerlink" title="kioptrix level1"></a>kioptrix level1</h1><h2 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h2><ol>
+<li>namp信息收集</li>
+<li>arp-scan发现主机</li>
+<li>netdiscover发现主机</li>
 </ol>
+<p>nmap -n -sn -sP 192.168.135.*</p>
+<p>arp-scan -l</p>
+<p>netdiscover -r 192.168.135.0/24</p>
+<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211111104456383.png" alt="image-20211111104456383"></p>
+<p>目录扫描</p>
+<p>dirb 192.168.135.254</p>
+<p>扫描漏洞</p>
+<p>nikto -h  192.168.135.254</p>
+<p>namp扫描</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-p-:扫描全端口-65535-</span><br><span class="line">-sV:扫描服务版本</span><br><span class="line">-sS:TCP SYN扫描，也称为密码扫描</span><br><span class="line">-T4:扫描时序(0-5),数字越大，速度越快</span><br></pre></td></tr></table></figure>
+
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2021/11/11/kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95-kioptrix-level1/" style="float: left;">
-        ← kali渗透测试:kioptrix level1
-    </a>
     
-    
-    <a class="pull-right" href="/2021/11/05/2018%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E8%B5%9BB%E9%83%A8%E5%88%86-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/">
-        2018年美亚杯团赛B部分:计算机取证 →
+    <a class="pull-right" href="/2021/11/05/2018%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E8%B5%9BA%E9%83%A8%E5%88%86-Linux%E5%8F%96%E8%AF%81/">
+        2018年美亚杯团赛A部分:Linux取证 →
     </a>
     
 </nav>

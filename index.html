@@ -28,7 +28,7 @@
     <meta name="keywords" content="" />
 
     <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+    <link rel="Shortcut Icon" href="/img/favicon.png" type="image/ico">
 
     <link rel="alternate" href="/atom.xml" title="Getuid" type="application/atom+xml">
     <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
@@ -201,6 +201,50 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/11/11/kali渗透测试-kioptrix-level1/">kali渗透测试:kioptrix level1</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-11-11T02:00:57.000Z" itemprop="datePublished">
+          2021-11-11
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        kioptrix level1获取信息
+namp信息收集
+arp-scan发现主机
+netdiscover发现主机
+
+nmap -n -sn -sP 192.168.135.*
+arp-scan -l
+netdiscover -r 192.168.135.0/24
+
+目录扫描
+dirb 192.168.135.254
+扫描漏洞
+nikto -h  192.168.135.254
+namp扫描
+1234-p-:扫描全端口-65535--s
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/11/11/kali渗透测试-kioptrix-level1/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -519,46 +563,6 @@ Raid重组D部分
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/10/21/raid重组技术技术与实践/">raid重组技术技术与实践</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-10-21T00:45:58.000Z" itemprop="datePublished">
-          2021-10-21
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        ps：Raid重组技术其实还是比较简单的，并不涉及底层分析，相反更多的更依赖工具和基础操作 （关键是复杂了咱也不会&gt;…&lt;）
-Raid基本概念
-RAID定义：
-RAID （Redundant Array of Independent Disks）即独立磁盘冗余阵列，通常简称为磁盘阵列
-
-RAID优点
-更大的存储空间；更快的传输速度；更高的数据安全性
-
-RAID术语
-物理盘：物理盘是指创建RAID所用的每块独立的物理硬盘
-逻辑盘
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/10/21/raid重组技术技术与实践/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           
           <a class="pull-right" href="/page/2/">Older Posts →</a>
@@ -573,6 +577,13 @@ RAID术语
     </div>
 </section>
 <!-- ============================ END Content =========================== -->
+
+<script>
+    ((window.gitter = {}).chat = {}).options = {
+      room: 'Doomkkkkk/ROMD'
+    };
+  </script>
+  <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
       
 <!-- ============================ Footer =========================== -->
@@ -650,5 +661,4 @@ $('#intro').find('img').each(function(){
 
 
       
-</body>
-</html>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
