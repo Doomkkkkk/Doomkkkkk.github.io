@@ -87,6 +87,21 @@
             </li>
             
             
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/区块链/" class="animsition-link">区块链<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/取证/" class="animsition-link">取证<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/渗透测试/" class="animsition-link">渗透测试<small>(3)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
             
             <li>
                 <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
@@ -177,15 +192,22 @@
           2021-11-05
       </time>
     
+    
+    | 
+    <a href='/tags/美亚取证/'>美亚取证</a>,
+    
+    <a href='/tags/计算机/'>计算机</a>
+    
+    
 </span>
                 <h1>2018年美亚杯团赛B部分:计算机取证</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="计算机取证"><a href="#计算机取证" class="headerlink" title="计算机取证"></a>计算机取证</h1><h4 id="B部分"><a href="#B部分" class="headerlink" title="B部分"></a>B部分</h4><p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211101154257809.png" alt="image-20211101154257809"></p>
+      		<h1><span id="计算机取证">计算机取证</span></h1><h4><span id="b部分">B部分</span></h4><p><img src="image-20211101154257809.png" alt="image-20211101154257809"></p>
 <blockquote>
 <p>进去先观察各个盘，有的需要卷影分析给分析出来，有的需要BitLocker解密</p>
-<p>然后进行自动取整，然后发现有<img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103093240473.png" alt="image-20211103093240473"></p>
+<p>然后进行自动取整，然后发现有<img src="image-20211103093240473.png" alt="image-20211103093240473"></p>
 <p>然后用这个密钥对某个盘进行解密，完事之后再自动取证</p>
 </blockquote>
 <ol>
@@ -194,51 +216,51 @@
 <blockquote>
 <p>启用了两个</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103093456354.png" alt="image-20211103093456354"></p>
+<p><img src="image-20211103093456354.png" alt="image-20211103093456354"></p>
 </li>
 <li><p>[单选题] 14.该笔记本计算机硬盘的第5分区为Bitlocker加密盘，寻找相关的恢复密钥。该密钥最后一组数字为？ (1分)<br>A. 405579<br>B. 236947<br>C. 663058<br>D. 193194<br>E. 231904<br> 标记本题</p>
 <p>选C</p>
 <p>前边已经找过了</p>
 <p>###15. [单选题] 15.该笔记本计算机硬盘的操作系统是什么？ (1分)<br>A. 视窗XP 专业版<br>B. 视窗7 企业版<br>C. 视窗8 家用版<br>D. 视窗10 专业版<br>E. Linux Ubuntu 18.04 LTS<br> 标记本题</p>
 <p>D</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103093605659.png" alt="image-20211103093605659"></p>
+<p><img src="image-20211103093605659.png" alt="image-20211103093605659"></p>
 <p>###16. [单选题] 16.黑客是通过什么方式入侵该笔记本计算机的操作系统？ (1分)<br>A. 远程桌面暴力破解(RDP Brute Force)<br>B. 病毒感染入侵<br>C. 操作系统漏洞入侵<br>D. 分布式拒绝服务入侵(DDoS)<br>E. SQL注入漏洞入侵<br> 标记本题</p>
 <p>A</p>
 <blockquote>
 <p>在连接登录的日志中发现有事件：试图使用显示凭据登录<br>然后搜索该事件4648<br>发现有很多，那么猜测是远程桌面暴力破解<br>然后我们再去验证一下，看看时间也是大体对应的</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103093957786.png" alt="image-20211103093957786"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103095113319.png" alt="image-20211103095113319"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103094622176.png" alt="image-20211103094622176"></p>
+<p><img src="image-20211103093957786.png" alt="image-20211103093957786"></p>
+<p><img src="image-20211103095113319.png" alt="image-20211103095113319"></p>
+<p><img src="image-20211103094622176.png" alt="image-20211103094622176"></p>
 <p>###17. [单选题] 17.接上题，黑客是通过哪个网络地址(IP Address)入侵该荣科数码的操作系统？ (1分)<br>A. 192.168.7.11<br>B. 192.168.7.12<br>C. 192.168.7.16<br>D. 192.168.7.102<br>E. 192.168.7.103<br> 标记本题</p>
 <p>D</p>
 <blockquote>
 <p>思路同上</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103094822727.png" alt="image-20211103094822727">###18. [单选题] 18.接上题，黑客首次成功入侵该操作系统的日期时间？ （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-10-25 16:18:44 +8<br>B. 2018-11-01 15:23:07 +8<br>C. 2018-11-01 15:31:42 +8<br>D. 2018-11-01 15:36:51 +8<br>E. 2018-11-01 17:42:08 +8<br> 标记本题</p>
+<p><img src="image-20211103094822727.png" alt="image-20211103094822727">###18. [单选题] 18.接上题，黑客首次成功入侵该操作系统的日期时间？ （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-10-25 16:18:44 +8<br>B. 2018-11-01 15:23:07 +8<br>C. 2018-11-01 15:31:42 +8<br>D. 2018-11-01 15:36:51 +8<br>E. 2018-11-01 17:42:08 +8<br> 标记本题</p>
 <p>C</p>
 <blockquote>
 <p>这个时间应该会在最后一次爆破失败到第一次远程桌面链接成功之间</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103095329563.png" alt="image-20211103095329563"></p>
+<p><img src="image-20211103095329563.png" alt="image-20211103095329563"></p>
 <p>###19. [单选题] 19.接上题，黑客用于入侵该操作系统的工作站名称？ (1分)<br>A. RKD-OFFICE<br>B. BLACK-I<br>C. WIN-H6OUSLN5PIH<br>D. ANONYMOUS<br>E. RKD-GUEST<br> 标记本题</p>
 <p>A</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103095433044.png" alt="image-20211103095433044"></p>
+<p><img src="image-20211103095433044.png" alt="image-20211103095433044"></p>
 <p>###20. [单选题] 20.黑客在该笔记本计算机的Windows资源管理器(Windows Explorer)中曾搜寻过的文字？ (1分)<br>A. iexplorer, password, login<br>B. user, password, security<br>C. s, documents, excel<br>D. login, password, ipcam<br>E. password, iexplorer, s<br> 标记本题</p>
 <p>E</p>
-<p>正常在这能找到的，不知道为啥<img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103095840826.png" alt="image-20211103095840826"></p>
+<p>正常在这能找到的，不知道为啥<img src="image-20211103095840826.png" alt="image-20211103095840826"></p>
 <p>###21. [单选题] 21.入侵该笔记本计算机后，黑客透过命令提示符(cmd)执行某些命令，紧接生成了什么文件？ (1分)<br>A. ip.txt<br>B. arp.txt<br>C. netscan.txt<br>D. ip.txt, arp.txt<br>E. ip.txt, arp.txt, netscan.txt<br> 标记本题</p>
 <blockquote>
 <p>生成文件一般会产生相应的快捷方式，在文件快捷方式解析里，可以根据他入侵系统时间，来查找这个时间点之后的文件解析<br>再在目标文件路径中看看有没有包含</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103100755337.png" alt="image-20211103100755337"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103101251134.png" alt="image-20211103101251134"></p>
+<p><img src="image-20211103100755337.png" alt="image-20211103100755337"></p>
+<p><img src="image-20211103101251134.png" alt="image-20211103101251134"></p>
 <p>###22. [单选题] 22.从笔记本计算机中，寻找黑客的命令控制服务器(C&amp;C服务器)的网络位置？ (1分)<br>A. 220.246.55.208<br>B. acdn.adnxs.com<br>C. 3a95a35cd6b35f714120f210c0ac0c10.clo.footprintdns.com<br>D. code.jquery.com<br>E. 220.246.55.212<br> 标记本题</p>
 <p>A</p>
 <blockquote>
 <p>没有什么固定的办法就以题搜题<br>这里找到一个FTP是与前边对应的</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103101954711.png" alt="image-20211103101954711"></p>
+<p><img src="image-20211103101954711.png" alt="image-20211103101954711"></p>
 <p>###23. [单选题] 23.黑客在该笔记本计算机系统通过什么形式链接命令控制服务器(C&amp;C服务器)？ (1分)<br>A. FTP<br>B. SSH<br>C. TELNET<br>D. HTTP<br>E. SFTP<br> 标记本题</p>
 <p>A</p>
 <p>同上</p>
@@ -247,76 +269,76 @@
 <blockquote>
 <p>借助前几题，查ftp的黑客网址，找浏览器下载缓存</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103132248691.png" alt="image-20211103132248691"></p>
+<p><img src="image-20211103132248691.png" alt="image-20211103132248691"></p>
 <p>###25. [单选题] 25.黑客从笔记本计算机的网络浏览器Internet Explorer下载过什么档案？ (1分)<br>A. netscan_portable.zip<br>B. 7z1805-x64.exe<br>C. mimikatz_trunk.zip<br>D. mimikatz_trunk.7z<br>E. 以上皆是<br> 标记本题</p>
 <p>E</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103132544490.png" alt="image-20211103132544490"></p>
+<p><img src="image-20211103132544490.png" alt="image-20211103132544490"></p>
 <p>###26. [单选题] 26.黑客入侵该笔记本计算机系统后，曾安装过什么软件？ (1分)<br>A. 7-Zip<br>B. WinSCP<br>C. PuTTY<br>D. Mimikatz<br>E. SoftPerfect Network Scanner<br> 标记本题</p>
 <p>A</p>
 <blockquote>
 <p>查看软件安装，<br>根据时间排除选A</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103133451292.png" alt="image-20211103133451292"></p>
+<p><img src="image-20211103133451292.png" alt="image-20211103133451292"></p>
 <p>###27. [单选题] 27.在笔记本计算机中，黑客执行程序\Users\Administrator\Desktop\netscan_portable\64-bit\netscan.exe的具体时间？ （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-11-01 16:07:12 +8<br>B. 2018-11-01 16:16:49 +8<br>C. 2018-11-01 16:04:34 +8<br>D. 2018-11-01 17:25:12 +8<br>E. 以上皆不是<br> 标记本题</p>
 <p>C</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103135908425.png" alt="image-20211103135908425"></p>
+<p><img src="image-20211103135908425.png" alt="image-20211103135908425"></p>
 <p>###28. [单选题] 28.2018年11月1日16:06，在笔记本计算机中有多少个关于网络信息的档案被黑客建立？ (1分)<br>A. 1<br>B. 2<br>C. 3<br>D. 4<br>E. 5<br> 标记本题</p>
 <p>B</p>
 <p>救命不会，求教</p>
 <p>###29. [单选题] 29.在笔记本计算机中，黑客执行程序\Users\Administrator\Desktop\iepv\iepv.exe的具体时间？ （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-11-01 16:07:12 +8<br>B. 2018-11-01 16:09:07 +8<br>C. 2018-11-01 16:17:51 +8<br>D. 2018-11-01 16:18:18 +8<br>E. 以上皆非<br> 标记本题</p>
 <p>A</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103141954844.png" alt="image-20211103141954844"></p>
+<p><img src="image-20211103141954844.png" alt="image-20211103141954844"></p>
 <p>###30. [单选题] 30.接上题，执行程序iepv.exe涉及什么dll文件？ (1分)<br>A. NTDLL.DLL<br>B. MSVCRT.DLL<br>C. BCRYPTPRIMITIVES.DLL<br>D. WINDOWS.STORAGE.DLL<br>E. 以上皆是<br> 标记本题</p>
 <p>E</p>
 <blockquote>
 <p>这道题需要我们把这个病毒程序导出来，在本地查看</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103143056256.png" alt="image-20211103143056256"></p>
+<p><img src="image-20211103143056256.png" alt="image-20211103143056256"></p>
 <blockquote>
 <p>然后把iepv.exe下载在本机的信任区，用dependency打开</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103144508450.png" alt="image-20211103144508450"></p>
+<p><img src="image-20211103144508450.png" alt="image-20211103144508450"></p>
 <p>###31. [单选题] 31.接上题，紧接程序iepv.exe执行后，有什么档案被建立，该档案哈希值(MD5)为？ (1分)<br>A. EDCE37A107A0D661D6B2ABD3449A156E<br>B. FE26492B12917DFE1B5A65252B8B4798<br>C. E23B7F04247A927E6EB98C26200135E1<br>D. B3C9312AC745F20F936577D426456AD8<br>E. E0836588DA17DA632B82CC2FDDE59E98<br> 标记本题</p>
 <p>C</p>
 <blockquote>
 <p>建立哈希库来搜索</p>
 <p>也可以反编译或者杀毒软件预警</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103153123103.png" alt="image-20211103153123103"></p>
+<p><img src="image-20211103153123103.png" alt="image-20211103153123103"></p>
 <blockquote>
 <p>排除readme.txt这种意义不大，然后的话iepassword.txt和iepv_sites.txt的争议比较大</p>
 <p>查看iepassword.txt的文本更可疑，所以猜测就是这个文件</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103153318046.png" alt="image-20211103153318046"></p>
+<p><img src="image-20211103153318046.png" alt="image-20211103153318046"></p>
 <p>###32. [单选题] 32.在笔记本计算机中，黑客曾执行程序\Users\Administrator\Downloads\mimikatz_trunk\x64\mimikatz.exe多少次？ (1分)<br>A. 2<br>B. 3<br>C. 4<br>D. 5<br>E. 6<br> 标记本题</p>
 <p>A</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103153521441.png" alt="image-20211103153521441"></p>
+<p><img src="image-20211103153521441.png" alt="image-20211103153521441"></p>
 <p>###33. [单选题] 33.接上题，执行上述mimikatz.exe后，黑客曾经输入了什么命令符？ (1分)<br>A. debug, logonpasswords<br>B. logon, passwords<br>C. privilegE：:debug, sekurlsA：:logonpasswords<br>D. privilegE：:logon, sekurlsA：:passwords<br>E. 以上皆不是<br> 标记本题</p>
 <p>C</p>
 <blockquote>
 <p>根据常识我们知道，mimikatz是内网渗透的神器，执行之后会出现命令提示框输入命令操作</p>
 <p>所以我们可以通过mimikatz的日志来追查他使用的命令</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103154108698.png" alt="image-20211103154108698"></p>
+<p><img src="image-20211103154108698.png" alt="image-20211103154108698"></p>
 <p>###34. [单选题] 34.接上题，mimikatz.exe执行上述命令符后，哪项信息可被黑客用作破解该系统其他用户的密码？ (1分)<br>A. NTLM: e19ccf75ee54e06b06a5907af13cef42<br>B. NTLM: 059b6a3134dd40d5543c59da1e10c664<br>C. SHA1: 9131834cf4378828626b1beccaa5dea2c46f9b63<br>D. SHA1: 116f90c6089215de0d7f4f530c9276f75a6c5209<br>E. 以上皆不是<br> 标记本题</p>
 <p>B</p>
 <blockquote>
 <p>还是这个日志，我们在里边找到了两个用户信息，一个是Adminbalabalabala这个用户，另一个是auxsup（根据系统用户信息，好像就这俩用户没被禁用）</p>
 <p>审题：破解其他用户密码，那肯定是其他用户的信息啊，黑客黑的是Adminbalabalabala，所以找auxsup的信息就可以了，SHA1是不能破解的，所以选B</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103155602726.png" alt="image-20211103155602726"></p>
+<p><img src="image-20211103155602726.png" alt="image-20211103155602726"></p>
 <p>###35. [单选题] 35.接上题，续上述mimikatz的结果，该密码长度为多少字符？ (1分)<br>A. 6<br>B. 7<br>C. 8<br>D. 9<br>E. 以上皆不是<br> 标记本题</p>
 <p>B</p>
 <blockquote>
 <p>把那个NTLM给解密</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103161844676.png" alt="image-20211103161844676"></p>
+<p><img src="image-20211103161844676.png" alt="image-20211103161844676"></p>
 <p>###36. [单选题] 36.在笔记本计算机中，黑客是否使用网络浏览器进入过荣科数码的网络摄像机(IP Camera)进行浏览？如进入过，具体日期及时间为？ （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 没有<br>B. 2018-11-01 16:02:37 +8<br>C. 2018-11-01 16:09:30 +8<br>D. 2018-11-01 17:17:14 +8<br>E. 以上皆不是<br> 标记本题</p>
 <p>C</p>
 <blockquote>
 <p>找到很多这样的IP，时间上也相符</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103162230199.png" alt="image-20211103162230199"></p>
+<p><img src="image-20211103162230199.png" alt="image-20211103162230199"></p>
 <p>###37. [单选题] 37.在笔记本计算机中，除网络浏览器外，黑客还通过什么软件入侵网络摄像机(IP Camera)？ (1分)<br>A. WinSCP<br>B. FileZilla<br>C. PuTTY<br>D. 命令提示符(CMD)<br>E. 档案总管<br> 标记本题</p>
 <p>A</p>
 <blockquote>
@@ -329,17 +351,17 @@
 <p>参考31题创建哈希库</p>
 <p>然后经过时间和常识的筛选，应该是这个</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103194829624.png" alt="image-20211103194829624"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103195211764.png" alt="image-20211103195211764"></p>
+<p><img src="image-20211103194829624.png" alt="image-20211103194829624"></p>
+<p><img src="image-20211103195211764.png" alt="image-20211103195211764"></p>
 <p>###39. [单选题] 39.接上题，分析上述从网络摄像机提取的档案，除账户admin外还有什么登陆账户发现？ (1分)<br>A. user<br>B. public<br>C. guest<br>D. user, guest<br>E. user, public<br> 标记本题</p>
 <p>D</p>
 <blockquote>
 <p>同上题，直接搜，然后查看</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103200215868.png" alt="image-20211103200215868"></p>
+<p><img src="image-20211103200215868.png" alt="image-20211103200215868"></p>
 <p>###40. [单选题] 40.接上题，网络摄像机可以透过什么方式链接多流媒体服务器？ (1分)<br>A. SFTP<br>B. TELNET<br>C. SSH<br>D. FTP<br>E. 以上皆不是<br> 标记本题</p>
 <p>D</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103200540775.png" alt="image-20211103200540775"></p>
+<p><img src="image-20211103200540775.png" alt="image-20211103200540775"></p>
 <p>###41. [单选题] 41.在笔记本计算机中，黑客曾经使用系统的记事本(Notepad)最后开启的一个文件名称为? (1分)<br>A. config_alarm.ini<br>B. config_3thddns.ini<br>C. readme.txt<br>D. desktop.ini<br>E. 以上皆不是<br> 标记本题</p>
 <p>​    A</p>
 <blockquote>
@@ -348,7 +370,7 @@
 <p><strong>“DefaultDomainName”后面即用户名，“Defaultpassword”后面即密码。</strong>(扯淡的是找了半天注册表才发现没有密码)</p>
 <p>直接进去打开Notepad，在里边分析</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103202939472.png" alt="image-20211103202939472"></p>
+<p><img src="image-20211103202939472.png" alt="image-20211103202939472"></p>
 </li>
 <li><p>[单选题] 42.在笔记本计算机中，黑客最后把被入侵用户桌面的档案全部删除，具体删除的日期时间是？ （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-11-01 15:32:46 +8<br>B. 2018-11-01 15:34:29 +8<br>C. 2018-11-01 17:32:29 +8<br>D. 2018-11-01 17:43:09 +8<br>E. 以上皆不是<br> 标记本题</p>
 <p>C</p>
@@ -356,8 +378,8 @@
 <p>这道题注意审题，黑客最后把桌面上的文档全删了，我们查看远程连接，看他断开连接的时间是多少</p>
 <p>再在卷影快照的桌面文档中看桌面文档大约什么时候消失的，找这两个时间点的区间</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103205526173.png" alt="image-20211103205526173"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103210231182.png" alt="image-20211103210231182"></p>
+<p><img src="image-20211103205526173.png" alt="image-20211103205526173"></p>
+<p><img src="image-20211103210231182.png" alt="image-20211103210231182"></p>
 </li>
 </ol>
 

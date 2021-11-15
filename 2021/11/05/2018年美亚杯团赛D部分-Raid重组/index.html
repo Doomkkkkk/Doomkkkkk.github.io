@@ -87,6 +87,21 @@
             </li>
             
             
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/区块链/" class="animsition-link">区块链<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/取证/" class="animsition-link">取证<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/渗透测试/" class="animsition-link">渗透测试<small>(3)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
             
             <li>
                 <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
@@ -177,13 +192,62 @@
           2021-11-05
       </time>
     
+    
+    | 
+    <a href='/tags/美亚取证/'>美亚取证</a>,
+    
+    <a href='/tags/Raid重组/'>Raid重组</a>
+    
+    
 </span>
                 <h1>2018年美亚杯团赛D部分:Raid重组</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<p>aaaaa</p>
-<h1 id="Raid重组"><a href="#Raid重组" class="headerlink" title="Raid重组"></a>Raid重组</h1><h4 id="D部分"><a href="#D部分" class="headerlink" title="D部分"></a>D部分</h4><p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103231854024.png" alt="image-20211103231854024"></p>
+<h1><span id="raid重组">Raid重组</span></h1><p>ps：Raid重组技术其实还是比较简单的，并不涉及底层分析，相反更多的更依赖工具和基础操作 （关键是复杂了咱也不会&gt;…&lt;）</p>
+<h2><span id="raid基本概念">Raid基本概念</span></h2><ul>
+<li><p>RAID定义：</p>
+<p>RAID （Redundant Array of Independent Disks）即独立磁盘冗余阵列，通常简称为磁盘阵列</p>
+</li>
+<li><p>RAID优点</p>
+<p>更大的存储空间；更快的传输速度；更高的数据安全性</p>
+</li>
+<li><p>RAID术语</p>
+<p>物理盘：物理盘是指创建RAID所用的每块独立的物理硬盘</p>
+<p>逻辑盘：多块物理盘组成RAID之后，多块物理盘就组成的新的硬盘</p>
+<p>热备盘：热备盘是指RAID中空闲、加电并待机的硬盘</p>
+<p>盘序：多块物理盘在创建RAID时，这些物理盘安排在RAID组中的先后顺序</p>
+<p>条带大小：在RAID中每块物理盘被分割为一个一个的大小相等单元被称为RAID的条带，是RAID处理数据的基本单元</p>
+</li>
+<li><p>RAID1、4、5、10、01等等</p>
+<p>重点了解一下RAID5</p>
+<p>常规左同步、左异步，常规右同步、右异步</p>
+</li>
+<li><p>RAID阵列卡设置名词解释</p>
+<ul>
+<li><p>Disk Group:磁盘组，这里相当于是阵列，例如配置了一个Raid1,就是一个磁盘组。</p>
+</li>
+<li><p>VD（virtual Disk）:虚拟磁盘，虚拟磁盘可以不使用阵列的全部容量，也就是说一个可以分为多个VD。</p>
+</li>
+<li><p>PD（physical disk）:故名思义，主是物理硬盘。</p>
+</li>
+<li><p>HS（Hot Spare）:热备盘</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2><span id="raid重组软件">Raid重组软件</span></h2><p>其实主要用到的工具就是取证大师、R-studio、FTK、还有VMware</p>
+<p>主要面临的阻碍就是磁盘阵列，我们可以通过取证大师或者R-studio给识别出来，但是有的时候并不如意，很有可能会解析半天或者识别不出来，下面推荐几种方法： </p>
+<ul>
+<li><p>取证大师解析逻辑卷+破解阵列</p>
+</li>
+<li><p>FTK挂载+取证大师快速检测识别</p>
+</li>
+<li><p>FTK挂载+VMware虚拟机读取+虚拟机绕过登陆密码</p>
+</li>
+</ul>
+<h4><span id="d部分">D部分</span></h4><p><img src="image-20211103231854024.png" alt="image-20211103231854024"></p>
 <ol>
 <li><p>[单选题] 第D部份 (第 55 至 84 题) : 根据镜像文件，其文件名为 “RongkeDatabaseD1.E01”, “RongekeDatabaseD2.E01”, “RongekeDatabaseD3.E01” 的内容，回答关于荣科数码(RKD)的数据库服务器的问题。 注意: 该系统时区未被正确设定，记录文件(log)内的时间较实际时间快16小时，且没有连结互联网。 </p>
 <p>55.荣科数码(RKD)的数据库服务器有多少个磁盘冗余数组(RAID)的虚拟块设备Multiple Devices(md)? (1分)<br>A. 0<br>B. 1<br>C. 2<br>D. 3<br>E. 4<br> 标记本题</p>
@@ -207,9 +271,9 @@
 <p>那么题目问的是卷组，就去找Vg2的卷组</p>
 <p>也可以查看取证大师，这里直接用挂载的磁盘</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104080246769.png" alt="image-20211104080246769"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104080432358.png" alt="image-20211104080432358"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104081521138.png" alt="image-20211104081521138"></p>
+<p><img src="image-20211104080246769.png" alt="image-20211104080246769"></p>
+<p><img src="image-20211104080432358.png" alt="image-20211104080432358"></p>
+<p><img src="image-20211104081521138.png" alt="image-20211104081521138"></p>
 </li>
 <li><p>[单选题] 58.该数据库内，”/boot”所在的虚拟块设备(Multiple Devices)总阵列大小(ARRAY SIZE)？ (1分)<br>A. 3900416 (3.72 GiB 3.99 GB)<br>B. 6831104 (6.51 GiB 7.00 GB)<br>C. 10218496 (9.75 GiB 10.46 GB)<br>D. 5109248 (4.87 GiB 5.23 GB)<br>E. 3415552 (3.26 GiB 3.50 GB)<br> 标记本题</p>
 <p>A</p>
@@ -218,7 +282,7 @@
 <p>df -T 查看大小和结构</p>
 <p>相差不大</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104083934309.png" alt="image-20211104083934309"></p>
+<p><img src="image-20211104083934309.png" alt="image-20211104083934309"></p>
 </li>
 <li><p>[单选题] 59.该数据库服务器的时区设定为？ (1分)<br>A. Asia/Macao<br>B. Asia/Hong_Kong<br>C. Hongkong<br>D. GMT<br>E. Etc/GMT+8<br> 标记本题</p>
 <p>E</p>
@@ -226,7 +290,7 @@
 <p>运行命令</p>
 <p>timedatectl</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104084520282.png" alt="image-20211104084520282"></p>
+<p><img src="image-20211104084520282.png" alt="image-20211104084520282"></p>
 </li>
 <li><p>[单选题] 60.根据串流服务器的记录, 黑客入侵后曾横向登入数据库服务器，其登入方式包括: (i)ftp (ii)ssh2 (iii)telnet (1分)<br>A. (i)<br>B. (ii)<br>C. (iii)<br>D. (i) and (ii)<br>E. (ii) and (iii)<br> 标记本题</p>
 <p>​    B</p>
@@ -235,8 +299,8 @@
 <p>/var/log/auth.log</p>
 <p>发现了黑客的登录方式ip</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103212609489.png" alt="image-20211103212609489"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104085037033.png" alt="image-20211104085037033"></p>
+<p><img src="image-20211103212609489.png" alt="image-20211103212609489"></p>
+<p><img src="image-20211104085037033.png" alt="image-20211104085037033"></p>
 </li>
 <li><p>[单选题] 61.接上题,首次成功登入数据库服务器的时间及账户为? （答案格式 － 账户名称 日期时间 “依第59条时区设定作答＂：YYYY-MM-DD HH:MM) (1分)<br>A. rkdadm 2018-11-01 16:33<br>B. auxsup 2018-11-01 16:33<br>C. auxsup 2018-11-02 08:33<br>D. root 2018-11-01 16:33<br>E. root 2018-11-01 16:31<br> 标记本题</p>
 <p>B</p>
@@ -245,18 +309,18 @@
 <p>前边全是登录失败，直到这个地方成功，而且来源IP也正确</p>
 <p>再加上时间的计算，因为开头说这个服务器没联网比实际快了16小时</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104085454338.png" alt="image-20211104085454338"></p>
+<p><img src="image-20211104085454338.png" alt="image-20211104085454338"></p>
 </li>
 <li><p>[单选题] 62.接上题，该账户在数据库服务器属于以下哪些用户组? (i)root (ii)www-data (iii)sudo (1分)<br>A. (i)<br>B. (ii)<br>C. (i) and (ii)<br>D. (ii) and (iii)<br>E. 以上皆不是<br> 标记本题</p>
 <p>E</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104090032976.png" alt="image-20211104090032976"></p>
+<p><img src="image-20211104090032976.png" alt="image-20211104090032976"></p>
 </li>
 <li><p>[单选题] 63.在该成功远程登录数据库服务器前曾经被多次登入失败，登入的用户名称包括： (i)root (ii)admin (iii)pi (1分)<br>A. (i)<br>B. (ii)<br>C. (i)及(iii)<br>D. (ii)及(iii)<br>E. 以上皆是<br> 标记本题</p>
 <p>C</p>
 <blockquote>
 <p>继续分析那个日志/var/log/auth.log</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104090209211.png" alt="image-20211104090209211"></p>
+<p><img src="image-20211104090209211.png" alt="image-20211104090209211"></p>
 </li>
 <li><p>[单选题] 64.接上题，该账户登入数据库服务器后，使用了哪一个CVE的漏洞进行提权？ (1分)<br>A. CVE - 2015 - 1328<br>B. CVE - 2015 - 8660<br>C. CVE - 2017 - 1000112<br>D. CVE - 2017 - 0358<br>E. CVE - 2017 - 16995<br> 标记本题</p>
 <p>C</p>
@@ -270,12 +334,12 @@
 <p>日志搜索</p>
 <p>除了gcc其他都搜不到</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211103212609489.png" alt="image-20211103212609489"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104091256220.png" alt="image-20211104091256220"></p>
+<p><img src="image-20211103212609489.png" alt="image-20211103212609489"></p>
+<p><img src="image-20211104091256220.png" alt="image-20211104091256220"></p>
 </li>
 <li><p>[单选题] 66.黑客在数据库服务器成功提权后，紧接进行了什么动作？ (1分)<br>A. 使用另一账户登入<br>B. 制作后门<br>C. 截取数据包<br>D. 建立新账户<br>E. 安装软件<br> 标记本题</p>
 <p>D</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104091617009.png" alt="image-20211104091617009"></p>
+<p><img src="image-20211104091617009.png" alt="image-20211104091617009"></p>
 </li>
 <li><p>[单选题] 67. 除首次被黑客登入的帐户外，还有什么账号被不当地登入使用？ (1分)<br>A. rkduser<br>B. rkduser1<br>C. rkduser2<br>D. rkduser3<br>E. rkduser4<br> 标记本题</p>
 <blockquote>
@@ -294,18 +358,18 @@
 <p>69和70结合来看，推测这个shell是定时触发的</p>
 <p>查看定时任务的文件夹crontabs</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104092809114.png" alt="image-20211104092809114"></p>
+<p><img src="image-20211104092809114.png" alt="image-20211104092809114"></p>
 </li>
 <li><p>[单选题] 70.接上题，该数据库服务器的后门何时会执行? (1分)<br>A. 管理员登入<br>B. 系统开机时<br>C. 数据库被存取时<br>D. 每一天<br>E. 每一分钟<br> 标记本题</p>
 <p>E</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104092838205.png" alt="image-20211104092838205"></p>
+<p><img src="image-20211104092838205.png" alt="image-20211104092838205"></p>
 </li>
 <li><p>[单选题] 71.黑客在该数据库服务器中进行了内网扫描，其扫描范围是： (1分)<br>A. 10.0.4.0 / 22<br>B. 10.0.4.0 / 24<br>C. 192.168.7.0 / 24<br>D. 192.168.7.103 / 24<br>E. 10.0.4.15 / 24<br> 标记本题</p>
 <p>B</p>
 <blockquote>
 <p>没说借助其他工具，应该就是在终端里进行的命令执行</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104093322336.png" alt="image-20211104093322336"></p>
+<p><img src="image-20211104093322336.png" alt="image-20211104093322336"></p>
 </li>
 <li><p>[单选题] 72.接上题，在该内网中有一台主机名名称为”RKDSERVER1”，黑客曾由数据库试图登入该主机，其登入方式为： (i)ftp (ii)ssh2 (iii)telnet (1分)<br>A. (i)<br>B. (ii)<br>C. (iii)<br>D. (i)及(ii)<br>E. (ii)及(iii)<br> 标记本题</p>
 <p>C</p>
@@ -314,8 +378,8 @@
 <p>查到RKDSERVER1的IP</p>
 <p>然后再用IP在终端中查找命令</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104094123044.png" alt="image-20211104094123044"></p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104094306447.png" alt="image-20211104094306447"></p>
+<p><img src="image-20211104094123044.png" alt="image-20211104094123044"></p>
+<p><img src="image-20211104094306447.png" alt="image-20211104094306447"></p>
 </li>
 <li><p>[单选题] 73.黑客在登入期间，曾经尝试登入数据库服务器的MYSQL数据库，总共失败多少次？(MYSQL的记录文件时间设定较实际时间快4小时） (1分)<br>A. 6<br>B. 8<br>C. 10<br>D. 12<br>E. 14<br> 标记本题</p>
 <p>B</p>
@@ -324,7 +388,7 @@
 <p>\var\log\mysql\error.log</p>
 <p>搜索拒绝连接denied，然后再根据时间分析合理的就8个</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104095857258.png" alt="image-20211104095857258"></p>
+<p><img src="image-20211104095857258.png" alt="image-20211104095857258"></p>
 </li>
 <li><p>[单选题] 74.在数据库服务器中，档案路径 ＂\home\rkduser\t＂ 是什么类型的档案？ (1分)<br>A. tcpdump capture file<br>B. ELF 64-bit LSB executable, x86-64<br>C. ASCII text<br>D. UTF-8 Unicode text<br>E. Bourne-Again shell script<br> 标记本题</p>
 <p>A</p>
@@ -348,17 +412,17 @@
 <blockquote>
 <p>结合74题，黑客dump出来的数据包</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104135218437.png" alt="image-20211104135218437"></p>
+<p><img src="image-20211104135218437.png" alt="image-20211104135218437"></p>
 </li>
 <li><p>[单选题] 77.接上题，截取数据包过程中，有多少次上述反向shell(Reverse shell)后门的成功连接？ (1分)<br>A. 0<br>B. 14<br>C. 1<br>D. 15<br>E. 7<br> 标记本题</p>
 <p>A</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104140115583.png" alt="image-20211104140115583"></p>
+<p><img src="image-20211104140115583.png" alt="image-20211104140115583"></p>
 <blockquote>
 <p>我们从这个配置信息中找到shell的端口是5152</p>
 <p>然后我们在流量包中分析这个端口的流量</p>
 <p>刚巧全是失败的，回应的数据包全是零</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104141004017.png" alt="image-20211104141004017"></p>
+<p><img src="image-20211104141004017.png" alt="image-20211104141004017"></p>
 </li>
 <li><p>[单选题] 78.接上题，黑客从数据包中获得的MYSQL数据库密码长度是多少个字符? (1分)<br>A. 4<br>B. 6<br>C. 9<br>D. 12<br>E. 15<br> 标记本题</p>
 <p>E</p>
@@ -368,21 +432,21 @@
 </li>
 <li><p>[单选题] 79.黑客登入上述MYSQL数据库后，曾在CLI界面使用MYSQL命令进行了多少个数据库及数据表(Table)的浏览？ (1分)<br>A. 一个数据库内的两个数据表<br>B. 两个数据库内的两个数据表<br>C. 一个数据库内的三个数据表<br>D. 两个数据库内的三个数据表<br>E. 三个数据库内的三个数据表</p>
 <p>D</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104142033385.png" alt="image-20211104142033385"></p>
+<p><img src="image-20211104142033385.png" alt="image-20211104142033385"></p>
 <blockquote>
 <p>根据黑客输入的命令挨个找</p>
 </blockquote>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104142117882.png" alt="image-20211104142117882"></p>
+<p><img src="image-20211104142117882.png" alt="image-20211104142117882"></p>
 </li>
 <li><p>[单选题] 80.数据库服务器中，黑客曾连接过哪一个FTP服务器? (1分)<br>A. 220.246.55.208<br>B. 10.0.4.10<br>C. 10.0.4.16<br>D. 192.168.7.103<br>E. 220.246.55.13<br> A</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104142224795.png" alt="image-20211104142224795"></p>
+<p><img src="image-20211104142224795.png" alt="image-20211104142224795"></p>
 </li>
 <li><p>[单选题] 81.接上题，该FTP服务器的上载账号名称及密码是： (1分)<br>A. upioad, 123456<br>B. upload, 123456<br>C. upload, 12345<br>D. admin, 123456<br>E. admin, abcdef</p>
-<p>B <img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104142709004.png" alt="image-20211104142709004"></p>
+<p>B <img src="image-20211104142709004.png" alt="image-20211104142709004"></p>
 </li>
 <li><p>[单选题] 82.黑客在数据库服务器注销前，进行了什么动作？ (1分)<br>A. 传送数据库数据<br>B. 删除命令痕迹<br>C. 汇出数据库<br>D. 卸除软件<br>E. 设置后门<br> 标记本题</p>
 <p>B</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211104144207504.png" alt="image-20211104144207504"></p>
+<p><img src="image-20211104144207504.png" alt="image-20211104144207504"></p>
 </li>
 <li><p>[单选题] 83.在数据库服务器中，恢复inode值为258177的档案，计算其SHA1哈希值 (1分)<br>A. 42323B19952CF79D626AD51FF14A5F201CFE969C<br>B. B151D2CCE44D80AB860879C0FE5BB7326C5A7F3D<br>C. EA4A616DF97B59F7672865DC1FB449DD8E4DF3E2<br>D. 8C3A07CC7E594E696F3C7A79EDB9C762905839A1<br>E. B3CDCEABD7B672603F9D6F63D037053C63D5F5B6<br> C</p>
 <blockquote>
@@ -405,8 +469,8 @@
     </a>
     
     
-    <a class="pull-right" href="/2021/11/04/2018%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E8%B5%9BF%E9%83%A8%E5%88%86-%E6%89%8B%E6%9C%BA%E5%8F%96%E8%AF%81/">
-        2018年美亚杯团赛F部分:手机取证 →
+    <a class="pull-right" href="/2021/11/04/2018%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E4%BD%93%E8%B5%9BE%E9%83%A8%E5%88%86-%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/">
+        2018年美亚杯团体赛E部分:内存取证 →
     </a>
     
 </nav>
