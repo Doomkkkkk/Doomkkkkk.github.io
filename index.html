@@ -263,21 +263,16 @@
                 <div class="col-md-8">
                     <p>
                       
-                        kioptrix level1获取信息
-namp信息收集
-arp-scan发现主机
-netdiscover发现主机
+                        kioptrix level1准备阶段：
+123kali  ip:192.168.135.128靶机   (这里需要把靶机设为nat连接)
 
-nmap -n -sn -sP 192.168.135.*
-arp-scan -l
-netdiscover -r 192.168.135.0/24
 
-目录扫描
-dirb 192.168.135.254
-扫描漏洞
-nikto -h  192.168.135.254
-namp扫描
-1234-p-:扫描全端口-65535--s
+信息搜集探测靶机ip
+因为是本地nat连接，所以仅需要C段扫描
+nmap -sS -sV 192.168.135.*
+123-sS 使用SYN半开式扫描，又称隐身扫描  -sV 服务探测-T4:扫描时序(0-5),数字越大，速度越快-p-:扫描全端口-65535-
+
+这是几个比较常用的，其他的想
                       
                     </p>
                     
